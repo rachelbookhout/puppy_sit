@@ -47,4 +47,5 @@ end
 
 gem 'factory_girl_rails'
 gem 'devise'
-
+gem 'carrierwave'
+gem 'fog'
