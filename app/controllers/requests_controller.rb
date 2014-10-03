@@ -1,9 +1,12 @@
 class RequestsController < ApplicationController
 
   def index
+    @requests = Requests.all
   end
 
   def show
+    #button to submit for this request should only show up if they are logged in
+    @request = Request.find(params[:id])
   end
 
   def new
@@ -22,9 +25,24 @@ class RequestsController < ApplicationController
   end
 
   def edit
+    #can only edit if user created this request
+    @request = Request.where(user: current_user).find(params[:id])
   end
 
-  def delete
+  def update
+    @request = Request.find(params[:id])
+    if @request.update(request_params)
+      redirect_to @request
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+  #can only delete if user created this request
+    @request = Request.where(user: current_user).find(params[:id])
+    @request.destroy
+    redirect_to requests_path
   end
 
   private
