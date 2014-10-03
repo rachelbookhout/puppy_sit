@@ -1,0 +1,38 @@
+<h1> Tell us about your Request </h1>
+<%= form_for @request do |r| %>
+
+ <% if @request.errors.any? %>
+    <p><%= "#{@request.errors.count} prevented your matchup from being saved:"%></p>
+    <ul>
+      <% @request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<%= f.label :dog_name %>
+<%= f.text_field :dog_name, required: true %>
+
+<%= f.label :start_time%>
+<%= f.datetime_field :start_time, required: true%>
+
+<%= f.label :end_time%>
+<%= f.datetime_field :end_time, required:true%>
+
+<%= f.label :pay %>
+<%= f.text_field :pay, required:true%>
+
+<%= f.label :address %>
+<%= f.text_field :address, required: true %>
+
+<%= f.label :title %>
+ <%= f.text_field :title, required: true %>
+
+<%= f.label :body %>
+<%= f.text_field :body, required: true%>
+
+
+<%= f.submit 'Submit'%>
+<% end %>
+
+<%= link_to 'Back', root_url %>
+</div>
