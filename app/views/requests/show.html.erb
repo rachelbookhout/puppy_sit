@@ -6,4 +6,11 @@
 <h3><%= @request.title%></h3>
 <h4><%= @request.body%></h4>
 </div>
+<h2>Questions?</h2>
 
+<%= form_for [@request,@comment] do |f| %>
+<%= f.text_area :body %>
+<%= f.submit %>
+<%end%>
+
+<%=link_to "Go Back", requests_path %>
