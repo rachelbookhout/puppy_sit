@@ -1,5 +1,5 @@
 <h1> Tell us about your Request </h1>
-<%= form_for @request do |r| %>
+<%= form_for @request do |f| %>
 
  <% if @request.errors.any? %>
     <p><%= "#{@request.errors.count} prevented your matchup from being saved:"%></p>
