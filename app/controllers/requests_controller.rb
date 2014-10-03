@@ -15,13 +15,15 @@ class RequestsController < ApplicationController
   end
 
   def create
-  #set requester_id
   @request = Request.new(request_params)
+  @request.requester_id = current_user.id
+  binding.pry
   if @request.save
     redirect_to @request
   else
     render :new
   end
+  binding.pry
   end
 
   def edit
