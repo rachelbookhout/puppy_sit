@@ -13,4 +13,10 @@
 <%= f.submit %>
 <%end%>
 
+<h2>Comments </h2>
+<ul>
+<%@comments.each do |comment| %>
+  <li><%= comment.body%> </li>
+  <%end%>
+  </ul>
 <%=link_to "Go Back", requests_path %>

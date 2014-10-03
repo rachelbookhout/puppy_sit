@@ -8,6 +8,7 @@ class RequestsController < ApplicationController
     #button to submit for this request should only show up if they are logged in
     @request = Request.find(params[:id])
     @comment = Comment.new
+    @comments = Comment.all.where(request_id:"#{@request.id}")
   end
 
   def new
@@ -24,7 +25,6 @@ class RequestsController < ApplicationController
   else
     render :new
   end
-  binding.pry
   end
 
   # def edit
