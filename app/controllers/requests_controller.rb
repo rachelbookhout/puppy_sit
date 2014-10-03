@@ -19,7 +19,6 @@ class RequestsController < ApplicationController
   def create
   @request = Request.new(request_params)
   @request.requester_id = current_user.id
-  binding.pry
   if @request.save
     redirect_to @request
   else
