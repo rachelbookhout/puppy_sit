@@ -11,10 +11,14 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     @comment.request_id = @request.id
-    @comment.save
-    redirect_to @request
+    if @comment.save
+      redirect_to @request
+      flash[:notice] = "Your comment has been added"
+    else
+      redirect_to @request
+      flash[:notice] = "Please input something into your comment"
+    end
   end
-
   # def edit
   # end
 

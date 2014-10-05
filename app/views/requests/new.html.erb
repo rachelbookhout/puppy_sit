@@ -2,7 +2,7 @@
 <%= form_for @request do |f| %>
 
  <% if @request.errors.any? %>
-    <p><%= "#{@request.errors.count} prevented your matchup from being saved:"%></p>
+    <p><%= "#{@request.errors.count} error(s) prevented your request from being saved:"%></p>
     <ul>
       <% @request.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
