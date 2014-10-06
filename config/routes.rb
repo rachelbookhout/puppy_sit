@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, only: [:show] do
+    resources :reviews, except:[:edit,:update,:delete]
+  end
   resources :requests do
    resources :comments, only:[:create]
    resources :responses, only:[:create]

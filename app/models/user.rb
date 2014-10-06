@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :responses, foreign_key: :responder_id
   has_many :requests, through: :responses
+  has_many :reviews, :as => :reviewable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
