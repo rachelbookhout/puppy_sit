@@ -7,15 +7,9 @@ feature 'User Submits a Request', %Q{
   about my pooch
 } do
 
-  #  context "authenticated user" do
-  #   before (:each) do
-  #     user = FactoryGirl.create(:user)
-  #   end
-  # end
 
   scenario 'User submits the entire form ' do
     request = FactoryGirl.build(:request)
-    # sign_in_as(request.requester)
     visit new_request_path
     fill_in "Dog Name", with: request.dog_name
     attach_file 'Photo', 'app/assets/images/demon_puppy.jpg'
@@ -31,7 +25,6 @@ feature 'User Submits a Request', %Q{
 
   scenario 'User submits a blank form' do
    request = FactoryGirl.build(:request)
-   # sign_in_as(request.requester)
    visit new_request_path
    click_on "Submit"
    expect(page).to have_content("8 error(s) have prevented your form from saving")

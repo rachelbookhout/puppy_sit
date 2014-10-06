@@ -17,7 +17,7 @@
 <%= f.text_area :body %>
 <%= f.submit %>
 <%end%>
-<% if @request.responses = [] || @request.responses.first.chosen != true %>
+<% if @request.responses == [] || @request.responses.first.chosen != true %>
 <%= form_for [@request,@response] do |f| %>
 <%= f.submit "I Want to Help!"%>
 <%end%>

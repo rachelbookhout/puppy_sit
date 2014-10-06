@@ -47,4 +47,13 @@ FactoryGirl.define do
     association :request
     association :user
   end
+
+  factory :review do
+    title "What a Great Sitter"
+    body "I was so happy with the job she did"
+    rating 5
+    association :requester
+    association :responder
+    association :request
+   end
 end
