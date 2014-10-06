@@ -1,4 +1,6 @@
 require 'rails_helper'
+include ActionDispatch::TestProcess
+
 feature 'User Submits a Request', %Q{
   As an user, I want to submit a Request
   and have the user know everything they need to know

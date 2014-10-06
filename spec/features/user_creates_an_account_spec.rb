@@ -1,4 +1,6 @@
 require 'rails_helper'
+include ActionDispatch::TestProcess
+
 feature "User creates a new account", %Q{
 As an user,
 I want to create an account
@@ -15,6 +17,7 @@ and be asked to sign in again once logged in
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
     fill_in "Password confirmation", with: user.password
+    attach_file 'Profile photo', 'app/assets/images/demon_puppy.jpg'
     within '.new_user' do
       click_on "Sign up"
     end

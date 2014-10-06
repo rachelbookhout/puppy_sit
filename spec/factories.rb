@@ -9,6 +9,7 @@ FactoryGirl.define do
       "hottie#{n}@hotmail.com"
     end
     password "hottie88"
+    profile_photo { fixture_file_upload(Rails.root.join('spec', 'photos', 'test.png'), 'image/png') }
   end
 
   factory :request do
@@ -25,7 +26,7 @@ FactoryGirl.define do
     end_time   '2014-10-05'
     pay '20'
     address "10 Perkins Apt 3, Boston MA 02130"
-    association :requester
+    association :requester, :factory=> :user
   end
 
   factory :comment do
