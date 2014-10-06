@@ -24,6 +24,15 @@
 <%= f.label :pay %>
 <%= f.text_field :pay, required:true%>
 
+<%= check_box_tag(:hourly) %>
+<%= label_tag(:hourly,"per hour")%>
+
+<%= check_box_tag(:weekly)%>
+<%= label_tag(:weekly,"per week")%>
+
+<%= check_box_tag(:visit) %>
+<%= label_tag(:visit, "per visit")%>
+
 <%= f.label :address %>
 <%= f.text_field :address, required: true %>
 
