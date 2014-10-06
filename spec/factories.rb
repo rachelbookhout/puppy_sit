@@ -2,7 +2,7 @@ include ActionDispatch::TestProcess
 
 FactoryGirl.define do
 
-  factory :user, aliases: [:requester] do
+  factory :user, aliases: [:requester, :responder] do
     first_name "Brad"
     last_name "Pitt"
     sequence :email do |n|
@@ -27,6 +27,13 @@ FactoryGirl.define do
     pay '20'
     address "10 Perkins Apt 3, Boston MA 02130"
     association :requester, factory: :user
+  end
+
+  factory :response do
+    chosen false
+
+    association :request
+    association :responder
   end
 
   factory :comment do
