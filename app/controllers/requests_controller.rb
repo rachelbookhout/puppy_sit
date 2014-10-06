@@ -9,6 +9,7 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     @comment = Comment.new
     @comments = Comment.all.where(request_id:"#{@request.id}")
+    @responder = Responder.new
   end
 
   def new

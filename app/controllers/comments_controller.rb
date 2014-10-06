@@ -1,9 +1,5 @@
 class CommentsController < ApplicationController
-
-  def new
-    @request = Request.find(params[:request_id])
-    @comment = Comment.new(comment_params)
-  end
+    before_filter :authenticate_user!
 
   def create
     @request = Request.find(params[:request_id])
