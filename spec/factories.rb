@@ -26,7 +26,7 @@ FactoryGirl.define do
     end_time   '2014-10-05'
     pay '20'
     address "10 Perkins Apt 3, Boston MA 02130"
-    association :requester, :factory=> :user
+    association :requester, factory: :user
   end
 
   factory :comment do

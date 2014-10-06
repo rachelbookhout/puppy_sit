@@ -7,29 +7,21 @@ feature 'User Submits a Comment', %Q{
   so I can gather more information about the request
 } do
 
-  context "authenticated user" do
-    before (:each) do
-      user = FactoryGirl.create(:user)
-      sign_in_as(user)
-    end
-  end
 
   scenario 'User Submits a Comment' do
-    request = FactoryGirl.build(:request)
-    # binding.pry
     comment = FactoryGirl.build(:comment)
-    visit request_path(request)
-    fill_in "Questions?", with: comment.body
-    click_on "Submit"
+    sign_in_as(comment.user)
+    visit request_path(comment.request)
+    fill_in "comment_body", with: comment.body
+    click_on "Create Comment"
     expect(page).to have_content("Your comment has been added")
   end
 
   scenario 'User Submit a Blank Comment' do
-    request = FactoryGirl.create(:request)
-    # binding.pry
-    comment = FactoryGirl.create(:comment)
-    visit request_path(request)
-    click_on "Submit"
+    comment = FactoryGirl.build(:comment)
+    sign_in_as(comment.user)
+    visit request_path(comment.request)
+    click_on "Create Comment"
     expect(page).to have_content("Please input something into your comment")
   end
 

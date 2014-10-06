@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-
+  before_filter :authenticate_user!, except: [:index,:show]
   def index
     @requests = Request.all
   end
@@ -21,7 +21,7 @@ class RequestsController < ApplicationController
   @request.requester_id = current_user.id
   if @request.save
     redirect_to @request
-  flash[:notice] = "This Request has been created successfully"
+    flash[:notice] = "This Request has been created successfully"
   else
     render :new
   end
