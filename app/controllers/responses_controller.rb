@@ -11,13 +11,10 @@ class ResponsesController < ApplicationController
   @response.responder_id = current_user.id
   @response.request_id = @request.id
   @response.chosen = true
-  binding.pry
   if @response.save
-    binding.pry
     redirect_to root_path
     flash[:notice] = "Thank you for your help. Please look at your email to learn about the next steps"
   else
-    binding.pry
     redirect_to @request
     flash[:notice] = "There has been an error with your request. Please try again"
   end

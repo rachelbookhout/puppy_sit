@@ -9,7 +9,7 @@ feature 'User Responds to a Request', %Q{
 
   scenario 'User successfully responds to a request' do
     response = FactoryGirl.build(:response)
-    sign_in_as(response.user)
+    sign_in_as(response.responder)
     visit request_path(response.request)
     click_on "I Want to Help!"
     expect(page).to have_content ("Thank you for your help. Please look at your email to learn about the next steps")
