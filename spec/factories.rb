@@ -2,7 +2,7 @@ include ActionDispatch::TestProcess
 
 FactoryGirl.define do
 
-  factory :user do
+  factory :user, aliases: [:requester] do
     first_name "Brad"
     last_name "Pitt"
     sequence :email do |n|
@@ -15,8 +15,8 @@ FactoryGirl.define do
     sequence :title do |n|
      "Need help - #{n}"
     end
-    sequence :requester_id do |n|
-      "#{n}"
+    sequence :id do |n|
+     "#{n}3"
     end
     photo { fixture_file_upload(Rails.root.join('spec', 'photos', 'test.png'), 'image/png') }
     dog_name "Fido"
@@ -25,6 +25,7 @@ FactoryGirl.define do
     end_time   '2014-10-05'
     pay '20'
     address "10 Perkins Apt 3, Boston MA 02130"
+    association :requester
   end
 
   factory :comment do

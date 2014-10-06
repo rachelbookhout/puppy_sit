@@ -1,7 +1,6 @@
 class Request < ActiveRecord::Base
   mount_uploader :photo, RequestPhotoUploader
-
-  belongs_to :user
+  belongs_to :requester, class_name: "User"
   has_many :comments
 
   validates :title, presence:true, uniqueness:true
@@ -12,6 +11,7 @@ class Request < ActiveRecord::Base
   validates :end_time, presence:true
   validates :address, presence:true
   validates :pay, presence:true
+
 
 end
 

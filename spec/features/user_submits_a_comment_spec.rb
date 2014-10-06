@@ -15,10 +15,10 @@ feature 'User Submits a Comment', %Q{
   end
 
   scenario 'User Submits a Comment' do
-    request = FactoryGirl.create(:request)
-    comment = FactoryGirl.create(:comment)
+    request = FactoryGirl.build(:request)
+    # binding.pry
+    comment = FactoryGirl.build(:comment)
     visit request_path(request)
-    save_and_open_page
     fill_in "Questions?", with: comment.body
     click_on "Submit"
     expect(page).to have_content("Your comment has been added")
@@ -26,6 +26,7 @@ feature 'User Submits a Comment', %Q{
 
   scenario 'User Submit a Blank Comment' do
     request = FactoryGirl.create(:request)
+    # binding.pry
     comment = FactoryGirl.create(:comment)
     visit request_path(request)
     click_on "Submit"

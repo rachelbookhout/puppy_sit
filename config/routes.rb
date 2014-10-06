@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :requests do
-   resources :comments, only:[:create]
+   resources :comments, only:[:create, :new]
   end
   root to:'requests#index'
   # The priority is based upon order of creation: first created -> highest priority.
