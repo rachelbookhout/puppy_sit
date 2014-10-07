@@ -10,7 +10,7 @@
     <img src = "<%= requester.profile_photo%>" height: "100px" width: "100px"%> - <%= requester.first_name %>
     <% requester.requests.each do |request| %>
     <% if request.responses != [] && request.responses[0]["responder_id"] == @user.id%>
-      <%= request.dog_name%><img src = "<%= request.photo%>"%>
+      <img src = "<%= request.photo%>"%><%= link_to "#{request.dog_name}", new_user_review_path(requester, :reviewable_type=>'requester', :request_id => "#{request.id}")%>
     <%end%>
     <%end%>
   <%end%>

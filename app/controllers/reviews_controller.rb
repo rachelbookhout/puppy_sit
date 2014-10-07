@@ -17,7 +17,6 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    binding.pry
     @user = User.find(params[:user_id])
     @review = Review.new(review_params)
     @review.reviewable_id = params[:user_id]
@@ -29,14 +28,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # def find_reviewable
-  #   params.each do |name, value|
-  #     if name =~ /(.+)_id$/
-  #       return $1.classify.constantize.find(value)
-  #     end
-  #   end
-  #   nil
-  # end
 
   private
 
