@@ -17,8 +17,16 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    binding.pry
     @user = User.find(params[:user_id])
     @review = Review.new(review_params)
+    @review.reviewable_id = params[:user_id]
+    @review.reviewer_id = current_user.id
+    if @review.save
+      redirect_to @user
+    else
+      render 'new'
+    end
   end
 
   # def find_reviewable
@@ -33,7 +41,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:request).permit(:title, :body, :rating)
+    params.require(:review).permit(:title, :body, :rating, :reviewable_type, :request_id)
   end
 
 

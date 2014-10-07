@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
     current_user.responses.each do |response|
      @reviewable_requesters << response.request.requester
      end
-     #uniq! throws errors if there is just one hence the long way
-   @reviewable_requesters = @reviewable_requesters.uniq
+     #uniq! throws errors if there is just one hence the long way - may reinstate unique values
+   @reviewable_requesters = @reviewable_requesters
   end
 
   def self.user_reviews_responder(current_user)
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
         @reviewable_responders  << trans.responder
       end
     end
-   @reviewable_responders = @reviewable_responders.uniq
+   @reviewable_responders = @reviewable_responders
   end
 
 end
