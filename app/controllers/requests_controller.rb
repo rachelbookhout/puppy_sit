@@ -20,6 +20,7 @@ class RequestsController < ApplicationController
   def create
   @request = Request.new(request_params)
   @request.requester_id = current_user.id
+  binding.pry
   if @request.save
     redirect_to @request
     flash[:notice] = "This Request has been created successfully"
@@ -52,7 +53,7 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:title,:address,:body,:pay,:dog_name,:photo,:start_time, :end_time)
+    params.require(:request).permit(:title,:address,:body,:pay,:dog_name,:photo,:start_time, :end_time, :hourly, :weekly, :daily)
   end
 end
 
