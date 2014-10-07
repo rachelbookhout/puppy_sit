@@ -1,5 +1,5 @@
 <h1> Tell us about your Request </h1>
-<%= form_for @request do |f| %>
+<%= simple_form_for @request do |f| %>
 
  <% if @request.errors.any? %>
     <p><%= "#{@request.errors.count} error(s) prevented your request from being saved:"%></p>
@@ -9,41 +9,24 @@
       <% end %>
     </ul>
   <% end %>
-<%= f.label :dog_name %>
-<%= f.text_field :dog_name, required: true %>
+<%= f.input :dog_name %>
 
 <%= f.label :photo %>
 <%= f.file_field :photo %>
 
-<%= f.label :start_time%>
-<%= f.datetime_field :start_time, required: true%>
+<%= f.input :start_time%>
 
-<%= f.label :end_time%>
-<%= f.datetime_field :end_time, required:true%>
+<%= f.input :end_time%>
 
-<%= f.label :pay %>
-<%= f.text_field :pay, required:true%>
+<%= f.input :pay %>
 
-<%= check_box_tag(:hourly) %>
-<%= label_tag(:hourly,"per hour")%>
+<%= f.input :address %>
 
-<%= check_box_tag(:weekly)%>
-<%= label_tag(:weekly,"per week")%>
+<%= f.input :title %>
 
-<%= check_box_tag(:visit) %>
-<%= label_tag(:visit, "per visit")%>
+<%= f.input :body %>
 
-<%= f.label :address %>
-<%= f.text_field :address, required: true %>
-
-<%= f.label :title %>
- <%= f.text_field :title, required: true %>
-
-<%= f.label :body %>
-<%= f.text_field :body, required: true%>
-
-
-<%= f.submit 'Submit'%>
+<%= f.button :submit%>
 <% end %>
 
 <%= link_to 'Back', root_url %>
