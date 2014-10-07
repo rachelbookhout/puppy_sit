@@ -25,18 +25,20 @@ ActiveRecord::Schema.define(version: 20141007124821) do
   end
 
   create_table "requests", force: true do |t|
-    t.string   "title",        null: false
-    t.integer  "requester_id", null: false
-    t.string   "dog_name",     null: false
-    t.text     "body",         null: false
-    t.string   "photo",        null: false
-    t.datetime "start_time",   null: false
-    t.datetime "end_time",     null: false
-    t.string   "address",      null: false
+    t.string   "title",                        null: false
+    t.integer  "requester_id",                 null: false
+    t.string   "dog_name",                     null: false
+    t.text     "body",                         null: false
+    t.string   "photo",                        null: false
+    t.datetime "start_time",                   null: false
+    t.datetime "end_time",                     null: false
+    t.string   "address",                      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "pay",          null: false
-    t.string   "pay_time"
+    t.integer  "pay",                          null: false
+    t.boolean  "hourly",       default: false
+    t.boolean  "weekly",       default: false
+    t.boolean  "daily",        default: false
   end
 
   add_index "requests", ["requester_id"], name: "index_requests_on_requester_id", using: :btree
