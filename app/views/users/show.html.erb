@@ -1,9 +1,25 @@
 <div class = "profile">
-<img src = "<%= @user.profile_photo%>">
+<img src = "<%= @user.profile_photo%>" height: "200px" width: "200px">
 <h1><%= @user.first_name %></h1>
 </div>
 
 <div class = "reviews">
-
-
+<h1>People you can Review </h1>
+<h2> People who you have baby-sat their pup</h2>
+  <% @requesters.each do |requester| %>
+    <img src = "<%= requester.profile_photo%>" height: "100px" width: "100px"%> - <%= requester.first_name %>
+    <% requester.requests.each do |request| %>
+    <% if request.responses != [] && request.responses[0]["responder_id"] == @user.id%>
+      <%= request.dog_name%><img src = "<%= request.photo%>"%>
+    <%end%>
+    <%end%>
+  <%end%>
+</div>
+</br>
+</br>
+</br>
+<h2>People who have babysat your pup</h2>
+  <% @responders.each do |responder|%>
+    <img src = "<%= responder.profile_photo%>"%> -<%= responder.first_name %>
+  <%end%>
 </div>

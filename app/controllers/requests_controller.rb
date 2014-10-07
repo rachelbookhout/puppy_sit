@@ -20,7 +20,6 @@ class RequestsController < ApplicationController
   def create
   @request = Request.new(request_params)
   @request.requester_id = current_user.id
-  binding.pry
   if @request.save
     redirect_to @request
     flash[:notice] = "This Request has been created successfully"

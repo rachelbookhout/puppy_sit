@@ -7,5 +7,11 @@ class Review < ActiveRecord::Base
   validates :body, presence:true
   validates :rating, presence:true, :inclusion => 1..5
 
+  def responder_reviews
+  end
+
+  def requester_reviews
+  end
+
 
 end

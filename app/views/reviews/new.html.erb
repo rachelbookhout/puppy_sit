@@ -1,5 +1,6 @@
 <h1>New Review</h1>
 <%= simple_form_for [@user,@review] do |f| %>
+  <%=f.input :reviewable_type, collection: @types %>
   <%= f.input :title %>
   <%= f.input :body%>
   <%= f.input :rating %>
