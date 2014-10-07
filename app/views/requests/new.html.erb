@@ -20,6 +20,10 @@
 
 <%= f.input :pay %>
 
+<%=f.input :hourly, as: :boolean, checked_value:true, unchecked_value: false %>
+<%=f.input :daily, as: :boolean, checked_value:true, unchecked_value: false %>
+<%=f.input :weekly, as: :boolean, checked_value:true, unchecked_value: false %>
+
 <%= f.input :address %>
 
 <%= f.input :title %>
