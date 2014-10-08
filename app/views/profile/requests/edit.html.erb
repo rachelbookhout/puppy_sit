@@ -1,0 +1,74 @@
+<%= simple_form_for @request do |f| %>
+
+ <% if @request.errors.any? %>
+    <p><%= "#{@request.errors.count} error(s) prevented your request from being saved:"%></p>
+    <ul>
+      <% @request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+<div class = "row">
+<div class="large-8 columns">
+<%= f.input :dog_name %>
+</div>
+</div>
+
+<div class = "row">
+<div class="large-8 columns">
+<%= f.label :photo %>
+<%= f.file_field :photo %>
+</div>
+</div>
+
+<div class = "row">
+<div class="large-5 columns">
+<%= f.input :start_time, wrapper_html:{id:'time'}%>
+</div>
+</div>
+<div class = "row">
+<div class = "large-5 columns">
+<%= f.input :end_time%>
+</div>
+</div>
+
+<div class = "row">
+<div class="large-4 columns">
+<%= f.input :pay %>
+</div>
+<div class="large-1 columns">
+<%=f.input :hourly, as: :boolean, checked_value:true, unchecked_value: false %>
+</div>
+<div class="large-1 columns">
+<%=f.input :daily, as: :boolean, checked_value:true, unchecked_value: false %>
+</div>
+<div class="large-1 columns">
+<%=f.input :weekly, as: :boolean, checked_value:true, unchecked_value: false %>
+</div>
+</div>
+
+<div class = "row">
+<div class="large-8 columns">
+<%= f.input :address %>
+</div>
+</div>
+
+<div class = "row">
+<div class="large-8 columns">
+<%= f.input :title %>
+<div class="large-8 columns">
+</div>
+
+<div class = "row">
+<div class="large-8 columns">
+<%= f.input :body %>
+</div>
+</div>
+
+<div class = "row">
+<div class="large-8 columns">
+<%= f.button :submit%>
+</div>
+<% end %>
+</div>

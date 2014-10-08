@@ -28,26 +28,27 @@ class RequestsController < ApplicationController
   end
   end
 
-  def edit
-    #can only edit if user created this request
-    @request = Request.where(request_id = current_user.id).find(params[:id])
-  end
+  # def edit
+  #   #can only edit if user created this request
+  #   @request = Request.where(request_id = current_user.id).find(params[:id])
+  # end
 
   def update
-    #@request = Request.where
-    if @request.update(request_params)
-      redirect_to @request
-    else
-      render 'edit'
-    end
+  @user = current_user
+  @request = Request.find(params[:id])
+   if @request.update(request_params)
+    redirect_to profile_user_requests_path(@user.id)
+   else
+    render 'edit'
+   end
   end
 
-  def destroy
-  #can only delete if user created this request
-    #@request = Request.where(user: current_user).find(params[:id])
-    @request.destroy
-    redirect_to requests_path
-  end
+  # def destroy
+  # #can only delete if user created this request
+  #   #@request = Request.where(user: current_user).find(params[:id])
+  #   @request.destroy
+  #   redirect_to requests_path
+  # end
 
   private
 
