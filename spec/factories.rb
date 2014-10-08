@@ -2,7 +2,7 @@ include ActionDispatch::TestProcess
 
 FactoryGirl.define do
 
-  factory :user, aliases: [:requester, :responder, :reviewer] do
+  factory :user, aliases: [:requester, :responder, :reviewer, :reviewable] do
     first_name "Brad"
     last_name "Pitt"
     sequence :email do |n|
@@ -38,12 +38,6 @@ FactoryGirl.define do
 
   factory :comment do
     body "What a cute puppy!"
-    sequence :user_id do |n|
-      "#{n}"
-    end
-    sequence :request_id do |n|
-      "#{n}"
-    end
     association :request
     association :user
   end
@@ -54,9 +48,7 @@ FactoryGirl.define do
     rating 5
     association :request
     association :reviewer
+    association :reviewable
     reviewable_type "Requester"
-    sequence :reviewable_id do |n|
-      "#{n}"
-    end
   end
 end

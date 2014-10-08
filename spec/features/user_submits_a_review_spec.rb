@@ -8,9 +8,19 @@ feature 'User Submits a Review', %Q{
 
 
   scenario 'User submits a filled-out review ' do
-    review = FactoryGirl.build(:review)
-    sign_in_as(review.reviewer)
-    visit new_user_review_path(review.reviewer)
+    reviewee = FactoryGirl.create(:user)
+    reviewer = FactoryGirl.create(:user)
+    review = FactoryGirl.create(:review)
+    sign_in_as(reviewer)
+    visit new_user_review_path(reviewee)
+    #find("#review_reviewable_type", :visible => false).value
+    # find("#review_request_id", :visible => false).value
+    reviewable_type = page.find('#review_reviewable_type')
+    reviewable_type = review.reviewable_type
+    request_id = page.find("#review_reviewable_type")
+    request_id =  review.request_id
+    # fill_in "review_reviewable_type", with: review.reviewable_type
+    # fill_in "review_request_id", with: review.request_id
     fill_in "Title", with: review.title
     fill_in "Body", with: review.body
     fill_in "Rating", with: review.rating
@@ -20,17 +30,21 @@ feature 'User Submits a Review', %Q{
 
 
   scenario 'User submits a blank review' do
-    review = FactoryGirl.build(:review)
-    sign_in_as(review.reviewer)
-    visit new_user_review_path(review.reviewer)
+    reviewee = FactoryGirl.create(:user)
+    reviewer = FactoryGirl.create(:user)
+    review = FactoryGirl.create(:review)
+    sign_in_as(reviewer)
+    visit new_user_review_path(reviewee)
     click_on "Create Review"
     expect(page).to have_content("can't be blank")
   end
 
   scenario 'User submits a review with a rating higher than 5 ' do
-    review = FactoryGirl.build(:review)
-    sign_in_as(review.reviewer)
-    visit new_user_review_path(review.reviewer)
+    reviewee = FactoryGirl.create(:user)
+    reviewer = FactoryGirl.create(:user)
+    review = FactoryGirl.create(:review)
+    sign_in_as(reviewer)
+    visit new_user_review_path(reviewee)
     fill_in "Title", with: review.title
     fill_in "Body", with: review.body
     fill_in "Rating", with: 10

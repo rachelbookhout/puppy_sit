@@ -43,9 +43,9 @@ group :development, :test do
   gem 'capybara'
   gem 'pry-rails'
   gem 'launchy'
+  gem 'factory_girl_rails'
 end
 
-gem 'factory_girl_rails'
 gem 'devise'
 gem 'carrierwave'
 gem 'fog'
@@ -53,3 +53,7 @@ gem 'fog'
 group :development, :test do
   gem 'dotenv-rails'
 end
+group :production do
+  gem 'pg'
+end
+gem 'rails_12factor', group: :production
