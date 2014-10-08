@@ -11,17 +11,8 @@ class Profile::RequestsController < ApplicationController
    @request = Request.find(params[:id])
   end
 
-  def update
-  @user = current_user
-  @request = Request.find(params[:id])
-   if @request.update(request_params)
-    redirect_to profile_user_requests_path(@user.id)
-   else
-    render 'edit'
-   end
-  end
 
-  def delete
+  def destroy
   @user = current_user
   @request = Request.find(params[:id])
   @request.destroy

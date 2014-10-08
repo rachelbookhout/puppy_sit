@@ -28,10 +28,6 @@ class RequestsController < ApplicationController
   end
   end
 
-  # def edit
-  #   #can only edit if user created this request
-  #   @request = Request.where(request_id = current_user.id).find(params[:id])
-  # end
 
   def update
   @user = current_user
@@ -43,12 +39,7 @@ class RequestsController < ApplicationController
    end
   end
 
-  # def destroy
-  # #can only delete if user created this request
-  #   #@request = Request.where(user: current_user).find(params[:id])
-  #   @request.destroy
-  #   redirect_to requests_path
-  # end
+
 
   private
 
