@@ -15,6 +15,10 @@ class Request < ActiveRecord::Base
   validates :pay, presence:true
 
 
+  # def chosen_user
+  #   responses.where(chosen: true).first.responder
+  # end
+
 end
 
 

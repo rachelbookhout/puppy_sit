@@ -7,23 +7,29 @@ feature 'User Submits a Review', %Q{
 } do
 
 
-  scenario 'User submits a filled-out review ' do
+  scenario 'User submits a filled-out review ', focus: true do
     reviewee = FactoryGirl.create(:user)
     reviewer = FactoryGirl.create(:user)
     review = FactoryGirl.create(:review)
+# Have a request whose response was done by reviewee, requester is reviewer
+
     sign_in_as(reviewer)
+    visit user_path(reviewee)
+    save_and_open_page
+    click_on "#{reviewee.first_name}"
     visit new_user_review_path(reviewee)
     #find("#review_reviewable_type", :visible => false).value
     # find("#review_request_id", :visible => false).value
-    reviewable_type = page.find('#review_reviewable_type')
-    reviewable_type = review.reviewable_type
-    request_id = page.find("#review_reviewable_type")
-    request_id =  review.request_id
+    review.reviewable_type = page.find('#review_reviewable_type')
+    # reviewable_type = review.reviewable_type
+    review.request_id = page.find("#review_reviewable_type")
+    # request_id =  review.request_id
     # fill_in "review_reviewable_type", with: review.reviewable_type
     # fill_in "review_request_id", with: review.request_id
     fill_in "Title", with: review.title
     fill_in "Body", with: review.body
     fill_in "Rating", with: review.rating
+    binding.pry
     click_on "Create Review"
     expect(page).to have_content("Thank you for submitting your review")
   end
