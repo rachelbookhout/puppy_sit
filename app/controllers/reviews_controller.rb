@@ -23,8 +23,10 @@ class ReviewsController < ApplicationController
     @review.reviewer_id = current_user.id
     if @review.save
       redirect_to @user
+      flash[:notice] = "Thank you for submitting your review"
     else
       render 'new'
+      flash[:notice] = "Please fill out the rest of the form"
     end
   end
 
