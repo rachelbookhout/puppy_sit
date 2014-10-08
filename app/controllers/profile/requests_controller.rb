@@ -8,7 +8,7 @@ class Profile::RequestsController < ApplicationController
 
   def edit
     @user = current_user
-   @request = Request.find(params[:id])
+    @request = Request.find(params[:id])
   end
 
 
