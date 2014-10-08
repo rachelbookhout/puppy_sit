@@ -2,13 +2,8 @@ class ReviewsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-  @reviews = Reviews.all
-  #   @reviewable = find_reviewable
-  #   @reviews = @reviewable.all
-  end
-
-  def show
-    @review = Review.find(params[:id])
+  @user = User.find(params[:user_id])
+  @reviews_recieved = Review.where("reviewable_id" == @user.id)
   end
 
   def new
