@@ -18,7 +18,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current!
-    @user = User.find(params[:id])
+    if params[:id] != nil
+      @user = User.find(params[:id])
+    else
+      @user = User.find(params[:user_id])
+    end
     if current_user.id != @user.id
       flash[:notice] = "You are not authorized to view this page"
       redirect_to root_path

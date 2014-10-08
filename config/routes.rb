@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   end
 
   namespace :profile do
-    resources :users, only: [:show]
+    resources :users, only: [:show, :edit, :update] do
+      resources :requests, only:[:index]
+      resources :responses, only:[:index]
+      resources :reviews, only:[:index]
+    end
   end
 
 
