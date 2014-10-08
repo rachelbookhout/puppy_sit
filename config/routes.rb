@@ -11,13 +11,13 @@ Rails.application.routes.draw do
     resources :users, only: [:show] do
       resources :requests, only:[:index, :edit, :destroy]
       resources :responses, only:[:index,:destroy]
-      resources :reviews, only:[:index]
+      resources :reviews, except: [:show]
     end
   end
 
 
   resources :users, only: [:show] do
-    resources :reviews, except:[:edit,:update,:destroy]
+    resources :reviews, only:[:index]
   end
   resources :requests, except: [:destroy,:edit] do
    resources :comments, only:[:create]
