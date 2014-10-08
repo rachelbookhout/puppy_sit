@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
+  namespace :admin do
+    resources :users, only:[:edit,:update,:delete]
+    resources :requests, only: [:edit,:update,:delete]
+    resources :comments, only: [:edit,:update,:delete]
+    resources :responses, only:[:edit,:update,:delete]
+  end
+
+  namespace :profile do
+    resources :users, only: [:show]
+  end
+
+
   resources :users, only: [:show] do
     resources :reviews, except:[:edit,:update,:delete]
   end

@@ -10,4 +10,18 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << [:first_name,:last_name,:profile_photo]
   end
 
+  def authorize!
+    if current_user.nil? or !current_user.is_admin?
+      flash[:notice] = "You are not authorized to view this resource."
+      redirect_to root_path
+    end
+  end
+
+  def current!
+    @user = User.find(params[:id])
+    if current_user.id != @user.id
+      flash[:notice] = "You are not authorized to view this page"
+      redirect_to root_path
+    end
+  end
 end

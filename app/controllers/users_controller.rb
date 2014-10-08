@@ -7,4 +7,7 @@ class UsersController < ApplicationController
   @responders = User.user_reviews_responder(@user)
   end
 
+  def is_admin?
+    role == 'admin'
+  end
 end
