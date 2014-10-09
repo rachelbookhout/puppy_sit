@@ -27,7 +27,6 @@ class ApplicationController < ActionController::Base
 
 
  def current!
-    binding.pry
     @user = User.find(params[:user_id])
     if current_user.id != @user.id
       flash[:notice] = "You are not authorized to view this page"
