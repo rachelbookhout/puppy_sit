@@ -1,0 +1,6 @@
+<ul>
+<%@reviews.each do |review| %>
+<li>Review of <%=review.reviewable.first_name %> for <%= review.request.dog_name%></li> <%=link_to "Edit Review", edit_profile_user_review_path(@user,review)%> <%=link_to "Delete Review",profile_user_review_path(@user,review), method: :delete, data: {confirm: "Are you sure"}  %>
+<%end%>
+</ul>
+
