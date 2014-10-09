@@ -39,6 +39,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 gem 'foundation-rails'
 group :development, :test do
+  gem 'email_spec'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'pry-rails'
