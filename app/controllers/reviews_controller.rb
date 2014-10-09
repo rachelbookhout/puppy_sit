@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
     @review.reviewer_id = current_user.id
     if @review.save
       NewReviewMailer.new_review(@review.reviewable).deliver
-      redirect_to user_reviews_path(@user.id)
+      redirect_to user_path(@user.id)
       flash[:notice] = "Thank you for submitting your review"
     else
       render 'new'

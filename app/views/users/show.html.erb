@@ -1,1 +1,10 @@
-
+<img src = "<%=@user.profile_photo%>" width = "20px" height = "20px"><%= @user.first_name %>
+<h1>Reviews for <%=@user.first_name%></h1>
+<ul>
+<%@reviews.each do |review| %>
+<li>From <%=review.reviewer.first_name%><img src="<%=review.reviewer.profile_photo%>" height = "20px" width = "20px"><%=review.title%>-<%=review.rating%> Stars</li>
+  <ul>
+  <li><%= review.body %></li>
+  </ul>
+<%end%>
+</ul>
