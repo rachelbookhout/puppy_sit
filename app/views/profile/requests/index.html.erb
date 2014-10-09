@@ -1,0 +1,8 @@
+<ul>
+<% @requests.each do |request| %>
+<li><img src = "<%= request.photo %>" width = "40" height = "40"><%= request.dog_name%> - <%=request.start_time %><%= request.end_time %>
+<%= link_to "Edit Request",edit_profile_user_request_path(@user.id, request.id)%>
+<%= link_to "Delete Request",profile_user_request_path(@user.id, request.id), method: :delete, data: {confirm: "Are you sure"}%>
+</li>
+<%end%>
+</ul>

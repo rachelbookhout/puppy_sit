@@ -1,21 +1,29 @@
 Rails.application.routes.draw do
   devise_for :users
-  namespace :admin do
-    resources :users, only:[:edit,:update,:delete]
-    resources :requests, only: [:edit,:update,:delete]
-    resources :comments, only: [:edit,:update,:delete]
-    resources :responses, only:[:edit,:update,:delete]
-  end
+  # namespace :admin do
+  #   resources :users, only:[:edit,:update,:delete]
+  #   resources :requests, only: [:edit,:update,:delete]
+  #   resources :comments, only: [:edit,:update,:delete]
+  #   resources :responses, only:[:edit,:update,:delete]
+  # end
 
   namespace :profile do
-    resources :users, only: [:show]
+    resources :users, only: [:show] do
+      resources :requests, only:[:index, :edit, :destroy]
+      resources :responses, only:[:index,:destroy]
+      resources :reviews, except: [:show] do
+        collection do
+          get 'myreviews'
+        end
+      end
+    end
   end
 
 
   resources :users, only: [:show] do
-    resources :reviews, except:[:edit,:update,:delete]
+    resources :reviews, only:[:index, :create, :show, :update]
   end
-  resources :requests do
+  resources :requests, except: [:destroy,:edit] do
    resources :comments, only:[:create]
    resources :responses, only:[:create]
   end
