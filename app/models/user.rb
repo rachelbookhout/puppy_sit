@@ -15,7 +15,9 @@ class User < ActiveRecord::Base
     @reviewable_requesters = []
     if current_user.responses.empty? == false
       current_user.responses.each do |response|
+          if response.request.reviewed == false
         @reviewable_requesters << response.request.requester
+          end
       end
       @reviewable_requesters = @reviewable_requesters.uniq
     end
@@ -25,8 +27,10 @@ class User < ActiveRecord::Base
     @reviewable_responders = []
     if current_user.requests.empty? == false
       current_user.requests.each do |request|
+          if request.reviewed == false
         request.responses.each do |trans|
           @reviewable_responders  << trans.responder
+        end
         end
       end
      @reviewable_responders = @reviewable_responders.uniq

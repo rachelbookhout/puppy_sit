@@ -9,11 +9,14 @@ class ReviewsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @review = Review.new(review_params)
+    @request = @review.request
     @review.reviewable_id = params[:user_id]
     @review.reviewer_id = current_user.id
     if @review.save
       update_review_score(@user, @review)
       NewReviewMailer.new_review(@review.reviewable).deliver
+      @request.reviewed = true
+      @request.save
       redirect_to user_path(@user.id)
       flash[:notice] = "Thank you for submitting your review"
     else
@@ -67,6 +70,7 @@ class ReviewsController < ApplicationController
     @user.save
     end
   end
+
 
  private
 
