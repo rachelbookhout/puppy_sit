@@ -1,7 +1,34 @@
 class RequestsController < ApplicationController
   before_filter :authenticate_user!, except: [:index,:show]
+
+   def find_addresses(array)
+    @geojson = []
+    array.each do |item|
+      @geojson << {
+      type: 'Feature',
+      geometry: {
+      type: 'Point',
+      coordinates: [item.longitude, item.latitude]
+      },
+      properties: {
+      name: item.dog_name,
+      photo: item.photo,
+      :'marker-color' => '#00607d',
+      :'marker-symbol' => 'circle',
+      :'marker-size' => 'medium'
+      }
+    }
+  end
+  respond_to do |format|
+    format.html
+    format.json { render json: @geojson }  # respond with the created JSON object
+  end
+end
+
+
   def index
     @requests = Request.all
+    @addresses = find_addresses(@requests)
   end
 
   def show

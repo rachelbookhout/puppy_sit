@@ -17,11 +17,7 @@ class Request < ActiveRecord::Base
   validates :address, presence:true
   validates :pay, presence:true
 
-
-
-
 end
-
 
 
 
