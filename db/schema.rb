@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010171800) do
+ActiveRecord::Schema.define(version: 20141010231255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 20141010171800) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "comments", ["request_id"], name: "index_comments_on_request_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "requests", force: true do |t|
     t.string   "title",                        null: false
@@ -53,6 +56,9 @@ ActiveRecord::Schema.define(version: 20141010171800) do
     t.datetime "timestamps"
   end
 
+  add_index "responses", ["request_id"], name: "index_responses_on_request_id", using: :btree
+  add_index "responses", ["responder_id"], name: "index_responses_on_responder_id", using: :btree
+
   create_table "reviews", force: true do |t|
     t.string  "reviewable_type", null: false
     t.integer "reviewable_id",   null: false
@@ -62,6 +68,10 @@ ActiveRecord::Schema.define(version: 20141010171800) do
     t.integer "request_id",      null: false
     t.integer "reviewer_id",     null: false
   end
+
+  add_index "reviews", ["request_id"], name: "index_reviews_on_request_id", using: :btree
+  add_index "reviews", ["reviewable_id"], name: "index_reviews_on_reviewable_id", using: :btree
+  add_index "reviews", ["reviewer_id"], name: "index_reviews_on_reviewer_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -81,6 +91,7 @@ ActiveRecord::Schema.define(version: 20141010171800) do
     t.string   "profile_photo",                       null: false
     t.integer  "responder_rating"
     t.integer  "requester_rating"
+    t.string   "profile"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
