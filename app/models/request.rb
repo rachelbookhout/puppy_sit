@@ -1,5 +1,8 @@
 class Request < ActiveRecord::Base
   mount_uploader :photo, RequestPhotoUploader
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
+
   belongs_to :requester, class_name: "User"
   has_many :comments
   has_many :responses
@@ -14,13 +17,7 @@ class Request < ActiveRecord::Base
   validates :address, presence:true
   validates :pay, presence:true
 
-
-  # def chosen_user
-  #   responses.where(chosen: true).first.responder
-  # end
-
 end
-
 
 
 
