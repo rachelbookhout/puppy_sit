@@ -14,7 +14,7 @@ class RequestsController < ApplicationController
       },
       properties: {
       name: item.dog_name,
-      photo: item.photo,
+      photo: "#{item.photo}",
       :'marker-color' => '#00607d',
       :'marker-symbol' => 'circle',
       :'marker-size' => 'medium'
