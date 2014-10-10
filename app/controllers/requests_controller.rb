@@ -1,9 +1,11 @@
 class RequestsController < ApplicationController
   before_filter :authenticate_user!, except: [:index,:show]
 
-   def find_addresses(array)
+
+  def index
+    @requests = Request.all
     @geojson = []
-    array.each do |item|
+    @requests.each do |item|
       @geojson << {
       type: 'Feature',
       geometry: {
@@ -25,11 +27,6 @@ class RequestsController < ApplicationController
   end
 end
 
-
-  def index
-    @requests = Request.all
-    @addresses = find_addresses(@requests)
-  end
 
   def show
     #button to submit for this request should only show up if they are logged in
