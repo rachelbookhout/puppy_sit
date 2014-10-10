@@ -38,33 +38,33 @@ class ReviewsController < ApplicationController
   end
 
    def calc_responder_review(user)
-    binding.pry
     responder_reviews = Review.where(reviewable_id:user.id, reviewable_type:"responder")
     response_rating = 0
     responder_reviews.each do |review|
-      review.rating += response_rating
+      response_rating += review.rating
     end
     @response_rating = response_rating/responder_reviews.length
   end
 
   def calc_requester_review(user)
-    binding.pry
-    requester_reviews = Review.where(reviewble:user.id, reviewable_type:"requester")
-     requester_rating = 0
+    requester_reviews = Review.where(reviewable_id:user.id, reviewable_type:"requester")
+    requester_rating = 0
     requester_reviews.each do |review|
-      review.rating += requester_rating
+    requester_rating  += review.rating
     end
     @requester_rating = requester_rating/requester_reviews.length
   end
 
   def update_review_score(user,review)
-    binding.pry
     if review.reviewable_type == "responder"
       calc_responder_review(user)
-      @response_rating = user.responder_rating
+      user.responder_rating = @response_rating
+      binding.pry
+      @user.save
     else
     calc_requester_review(user)
-    @requester_rating = user.requester_rating
+    user.requester_rating = @requester_rating
+    @user.save
     end
   end
 

@@ -12,22 +12,25 @@ class User < ActiveRecord::Base
 
 
   def self.user_reviews_requester(current_user)
-   @reviewable_requesters = []
-    current_user.responses.each do |response|
-     @reviewable_requesters << response.request.requester
-     end
-     #uniq! throws errors if there is just one hence the long way
-   @reviewable_requesters = @reviewable_requesters.uniq
+    @reviewable_requesters = []
+    if current_user.responses.empty? == false
+      current_user.responses.each do |response|
+        @reviewable_requesters << response.request.requester
+      end
+      @reviewable_requesters = @reviewable_requesters.uniq
+    end
   end
 
   def self.user_reviews_responder(current_user)
     @reviewable_responders = []
-    current_user.requests.each do |request|
-      request.responses.each do |trans|
-        @reviewable_responders  << trans.responder
+    if current_user.requests.empty? == false
+      current_user.requests.each do |request|
+        request.responses.each do |trans|
+          @reviewable_responders  << trans.responder
+        end
       end
+     @reviewable_responders = @reviewable_responders.uniq
     end
-   @reviewable_responders = @reviewable_responders.uniq
   end
 
 end

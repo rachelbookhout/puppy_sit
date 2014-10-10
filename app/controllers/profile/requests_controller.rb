@@ -20,6 +20,6 @@ class Profile::RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:title,:address,:body,:pay,:dog_name,:photo,:start_time, :end_time, :hourly, :weekly, :daily. :longitude, :latitude)
+    params.require(:request).permit(:title,:address,:body,:pay,:dog_name,:photo,:start_time, :end_time, :hourly, :weekly, :daily, :longitude, :latitude)
   end
 end
