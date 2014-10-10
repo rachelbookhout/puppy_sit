@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
     @review.reviewable_id = params[:user_id]
     @review.reviewer_id = current_user.id
     if @review.save
+      update_review_score(@user, @review)
       NewReviewMailer.new_review(@review.reviewable).deliver
       redirect_to user_path(@user.id)
       flash[:notice] = "Thank you for submitting your review"
@@ -27,6 +28,7 @@ class ReviewsController < ApplicationController
     @review.reviewable_id = params[:user_id]
     @review.reviewer_id = current_user.id
     if @review.update(update_review_params)
+      update_review_score(@user, @review)
       redirect_to profile_user_path(@user.id)
       flash[:notice] = "Thank you for the updated review"
     else
@@ -35,6 +37,36 @@ class ReviewsController < ApplicationController
     end
   end
 
+   def calc_responder_review(user)
+    binding.pry
+    responder_reviews = Review.where(reviewable_id:user.id, reviewable_type:"responder")
+    response_rating = 0
+    responder_reviews.each do |review|
+      review.rating += response_rating
+    end
+    @response_rating = response_rating/responder_reviews.length
+  end
+
+  def calc_requester_review(user)
+    binding.pry
+    requester_reviews = Review.where(reviewble:user.id, reviewable_type:"requester")
+     requester_rating = 0
+    requester_reviews.each do |review|
+      review.rating += requester_rating
+    end
+    @requester_rating = requester_rating/requester_reviews.length
+  end
+
+  def update_review_score(user,review)
+    binding.pry
+    if review.reviewable_type == "responder"
+      calc_responder_review(user)
+      @response_rating = user.responder_rating
+    else
+    calc_requester_review(user)
+    @requester_rating = user.requester_rating
+    end
+  end
 
  private
 

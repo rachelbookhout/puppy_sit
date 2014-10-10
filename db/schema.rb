@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010012549) do
+ActiveRecord::Schema.define(version: 20141010171800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,30 +25,32 @@ ActiveRecord::Schema.define(version: 20141010012549) do
   end
 
   create_table "requests", force: true do |t|
-    t.string   "title",        null: false
-    t.integer  "requester_id", null: false
-    t.string   "dog_name",     null: false
-    t.text     "body",         null: false
-    t.string   "photo",        null: false
-    t.datetime "start_time",   null: false
-    t.datetime "end_time",     null: false
-    t.string   "address",      null: false
+    t.string   "title",                        null: false
+    t.integer  "requester_id",                 null: false
+    t.string   "dog_name",                     null: false
+    t.text     "body",                         null: false
+    t.string   "photo",                        null: false
+    t.datetime "start_time",                   null: false
+    t.datetime "end_time",                     null: false
+    t.string   "address",                      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "pay",          null: false
+    t.integer  "pay",                          null: false
     t.boolean  "hourly"
     t.boolean  "weekly"
     t.boolean  "daily"
     t.float    "longitude"
     t.float    "latitude"
+    t.boolean  "reviewed",     default: false
   end
 
   add_index "requests", ["requester_id"], name: "index_requests_on_requester_id", using: :btree
 
   create_table "responses", force: true do |t|
-    t.integer "responder_id",                 null: false
-    t.integer "request_id",                   null: false
-    t.boolean "chosen",       default: false, null: false
+    t.integer  "responder_id",                 null: false
+    t.integer  "request_id",                   null: false
+    t.boolean  "chosen",       default: false, null: false
+    t.datetime "timestamps"
   end
 
   create_table "reviews", force: true do |t|
@@ -77,6 +79,8 @@ ActiveRecord::Schema.define(version: 20141010012549) do
     t.string   "first_name",                          null: false
     t.string   "last_name",                           null: false
     t.string   "profile_photo",                       null: false
+    t.integer  "responder_rating"
+    t.integer  "requester_rating"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
