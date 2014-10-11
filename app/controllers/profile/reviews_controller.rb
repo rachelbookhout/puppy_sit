@@ -1,9 +1,9 @@
 class Profile::ReviewsController < ApplicationController
 
   def index
-  @user = User.find(params[:user_id])
-  @requesters = User.user_reviews_requester(@user)
-  @responders = User.user_reviews_responder(@user)
+    @user = User.find(params[:user_id])
+    @requesters = User.user_reviews_requester(@user)
+    @responders = User.user_reviews_responder(@user)
   end
 
   def new
@@ -12,22 +12,21 @@ class Profile::ReviewsController < ApplicationController
   end
 
   def myreviews
-   @user = User.find(params[:user_id])
-   @reviews = Review.where("reviewer_id" == @user.id)
+    @user = User.find(params[:user_id])
+    @reviews = Review.where("reviewer_id" == @user.id)
   end
 
   def edit
-  @user = User.find(params[:user_id])
-  @review = Review.find(params[:id])
+    @user = User.find(params[:user_id])
+    @review = Review.find(params[:id])
   end
 
 
   def destroy
-    #is this reviews that the current user wrote
-  @user = current_user
-  @review = Review.find(params[:id])
-  @review.destroy
-  redirect_to profile_user_path(@user.id)
+    @user = current_user
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to profile_user_path(@user.id)
   end
 
 

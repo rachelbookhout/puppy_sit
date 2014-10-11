@@ -2,8 +2,8 @@ class ReviewsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-  @user = User.find(params[:user_id])
-  @reviews_recieved = Review.where("reviewable_id" == @user.id)
+    @user = User.find(params[:user_id])
+    @reviews_recieved = Review.where("reviewable_id" == @user.id)
   end
 
   def create
@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-    def update
+  def update
     @user = User.find(params[:user_id])
     @review = Review.find(params[:id])
     @review.reviewable_id = params[:user_id]
@@ -40,7 +40,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-   def calc_responder_review(user)
+  def calc_responder_review(user)
     responder_reviews = Review.where(reviewable_id:user.id, reviewable_type:"responder")
     response_rating = 0
     responder_reviews.each do |review|
@@ -53,7 +53,7 @@ class ReviewsController < ApplicationController
     requester_reviews = Review.where(reviewable_id:user.id, reviewable_type:"requester")
     requester_rating = 0
     requester_reviews.each do |review|
-    requester_rating  += review.rating
+      requester_rating  += review.rating
     end
     @requester_rating = requester_rating/requester_reviews.length
   end
@@ -65,14 +65,13 @@ class ReviewsController < ApplicationController
       binding.pry
       @user.save
     else
-    calc_requester_review(user)
-    user.requester_rating = @requester_rating
-    @user.save
+      calc_requester_review(user)
+      user.requester_rating = @requester_rating
+      @user.save
     end
   end
 
-
- private
+  private
 
   def review_params
     params.require(:review).permit(:title, :body, :rating, :reviewable_type, :request_id)

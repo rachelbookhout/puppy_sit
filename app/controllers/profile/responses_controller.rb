@@ -1,5 +1,5 @@
 class Profile::ResponsesController < ApplicationController
-    before_filter :current!
+  before_filter :current!
 
   def index
     @user = current_user
@@ -13,5 +13,4 @@ class Profile::ResponsesController < ApplicationController
   @response.destroy
   redirect_to profile_user_responses_path(@user.id)
   end
-
 end

@@ -1,9 +1,9 @@
 class Profile::RequestsController < ApplicationController
-    before_filter :current!
+  before_filter :current!
 
   def index
-  @user = current_user
-  @requests = @user.requests
+    @user = current_user
+    @requests = @user.requests
   end
 
   def edit
@@ -13,10 +13,10 @@ class Profile::RequestsController < ApplicationController
 
 
   def destroy
-  @user = current_user
-  @request = Request.find(params[:id])
-  @request.destroy
-  redirect_to profile_user_requests_path(@user.id)
+    @user = current_user
+    @request = Request.find(params[:id])
+    @request.destroy
+    redirect_to profile_user_requests_path(@user.id)
   end
 
   def request_params

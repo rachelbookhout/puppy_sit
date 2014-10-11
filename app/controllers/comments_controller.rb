@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-    before_filter :authenticate_user!
+  before_filter :authenticate_user!
 
   def create
     @request = Request.find(params[:request_id])
@@ -15,14 +15,6 @@ class CommentsController < ApplicationController
       flash[:notice] = "Please input something into your comment"
     end
   end
-  # def edit
-  # end
-
-  # def update
-  # end
-
-  # def destroy
-  # end
 
   private
 

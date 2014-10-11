@@ -15,21 +15,23 @@ class RequestsController < ApplicationController
       properties: {
       name: item.dog_name,
       photo: "#{item.photo}",
+      num: item.id,
+      start_time: item.start_time,
+      end_time: item.end_time,
       :'marker-color' => '#00607d',
       :'marker-symbol' => 'circle',
       :'marker-size' => 'medium'
       }
     }
+    end
+    respond_to do |format|
+      format.html
+      format.json { render json: @geojson }
+    end
   end
-  respond_to do |format|
-    format.html
-    format.json { render json: @geojson }  # respond with the created JSON object
-  end
-end
 
 
   def show
-    #button to submit for this request should only show up if they are logged in
     @request = Request.find(params[:id])
     @comment = Comment.new
     @comments = Comment.all.where(request_id:"#{@request.id}")
@@ -37,7 +39,6 @@ end
   end
 
   def new
-  #can only see this page if they are logged in
   @request = Request.new
   end
 
@@ -52,18 +53,15 @@ end
   end
   end
 
-
   def update
   @user = current_user
   @request = Request.find(params[:id])
-   if @request.update(request_params)
+  if @request.update(request_params)
     redirect_to profile_user_requests_path(@user.id)
-   else
+  else
     render 'edit'
-   end
   end
-
-
+  end
 
   private
 
