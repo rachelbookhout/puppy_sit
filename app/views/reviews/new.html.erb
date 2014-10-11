@@ -1,9 +1,0 @@
-<h1>New Review</h1>
-<%= simple_form_for [@user,@review] do |f| %>
-  <%= f.hidden_field :reviewable_type, :value => params[:reviewable_type]%>
-  <%= f.hidden_field :request_id, :value => params[:request_id]%>
-  <%= f.input :title %>
-  <%= f.input :body%>
-  <%= f.input :rating %>
-  <%= f.button :submit %>
-<%end%>
