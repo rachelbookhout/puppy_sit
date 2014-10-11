@@ -6,6 +6,7 @@ class ReviewsController < ApplicationController
     @reviews_recieved = Review.where("reviewable_id" == @user.id)
   end
 
+
   def create
     @user = User.find(params[:user_id])
     @review = Review.new(review_params)
@@ -20,7 +21,7 @@ class ReviewsController < ApplicationController
       redirect_to user_path(@user.id)
       flash[:notice] = "Thank you for submitting your review"
     else
-      render 'new'
+      render "profile/reviews/new"
       flash[:notice] = "Please fill out the rest of the form"
     end
   end

@@ -6,7 +6,7 @@ FactoryGirl.define do
     first_name "Brad"
     last_name "Pitt"
     sequence :email do |n|
-      "hottie#{n}@hotmail.com"
+      "hottie43#{n}@hotmail.com"
     end
     password "hottie88"
     profile_photo { fixture_file_upload(Rails.root.join('spec', 'photos', 'test.png'), 'image/png') }
@@ -14,7 +14,7 @@ FactoryGirl.define do
 
   factory :request do
     sequence :title do |n|
-     "Need help - #{n}"
+     "Need help - #2{n}"
     end
     sequence :id do |n|
      "#{n}3"
@@ -46,6 +46,7 @@ FactoryGirl.define do
     title "What a Great Sitter"
     body "I was so happy with the job she did"
     rating 5
+    # association :response
     association :request
     association :reviewer
     association :reviewable

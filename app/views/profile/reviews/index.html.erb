@@ -17,7 +17,9 @@
 </br>
 </br>
 <h2>People who have babysat your pup</h2>
-  <% @responders.each do |responder|%>
-    <img src = "<%= responder.profile_photo%>"%> -<%= link_to "#{responder.first_name}", new_profile_user_review_path(responder,:reviewable_type=>'responder', :request_id => "#{responder.responses[0]["request_id"]}")%>
+  <% if @responders = nil %>
+    <% @responders.each do |responder|%>
+      <img src = "<%= responder.profile_photo%>"%> -<%= link_to "#{responder.first_name}", new_profile_user_review_path(responder,:reviewable_type=>'responder', :request_id => "#{responder.responses[0]["request_id"]}")%>
+    <%end%>
   <%end%>
 </div>
