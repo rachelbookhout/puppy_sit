@@ -15,7 +15,7 @@ map.featureLayer.on('layeradd', function(e) {
   marker = e.layer;
   properties = marker.feature.properties;
   popupContent = '<div class="popup">' + '<h3>' + '<a href ="requests/' + properties.num + '">'
-  + properties.name + '</a>' +'</h3>' + '<h4> From: ' + properties.start_time + '</h4> ' + '<h4> To: ' + properties.end_time +  '</h4>' +'<p>' + '<img src="' + properties.photo + '">' + '</p>' + '</div>';
+  + properties.name + '</a>' +'</h3>' + '<h4> From: ' + properties.start_time + '</h4> ' + '<h4> To: ' + properties.end_time +  '</h4>' +'<p>' + '<img src="' + properties.photo + '" width = "300px" height = "300px">' + '</p>' + '</div>';
   return marker.bindPopup(popupContent, {
     closeButton: false,
     minWidth: 320

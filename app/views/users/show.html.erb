@@ -1,8 +1,21 @@
-<img src = "<%=@user.profile_photo%>" width = "20px" height = "20px"><%= @user.first_name %>
+<div id = "profile-page">
+<img src = "<%=@user.profile_photo%>" width = "200px" height = "200px"><%= @user.first_name %>
+<% if @user.profile != nil%>
+  <%= @user.profile%>
+<%end%>
+<% if @user.requester_rating != nil %>
+  <h5> General Review Score:<%= @user.requester_rating %></h5>
+<%end%>
+<% if @user.responder_rating != nil %>
+  <h5> Review Score for Babysitting Puppies:<%= @user.responder_rating %></h5>
+<%end%>
+
+</div>
+
 <h1>Reviews for <%=@user.first_name%></h1>
 <ul>
 <%@reviews.each do |review| %>
-  <li>From <%=review.reviewer.first_name%><img src="<%=review.reviewer.profile_photo%>" height = "20px" width = "20px"><%=review.title%>-<%=review.rating%> Stars</li>
+  <li>From <%=review.reviewer.first_name%><img src="<%=review.reviewer.profile_photo%>" height = "200px" width = "200px"><%=review.title%>-<%=review.rating%> Stars</li>
   <ul>
     <li><%= review.body %></li>
   </ul>

@@ -2,7 +2,8 @@
 
 <h1>People you can Review </h1>
 <h2> People who you have baby-sat their pup</h2>
-  <% @requesters.each do |requester| %>
+  <% if @requesters != nil %>
+    <% @requesters.each do |requester| %>
       <img src = "<%= requester.profile_photo%>" height: "100px" width: "100px"%> - <%= requester.first_name %>
       <% requester.requests.each do |request| %>
         <% if request.responses != [] && request.responses[0]["responder_id"] == @user.id%>
@@ -10,6 +11,7 @@
         <%end%>
       <%end%>
     <%end%>
+  <%end%>
 </div>
 </br>
 </br>

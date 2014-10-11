@@ -62,7 +62,6 @@ class ReviewsController < ApplicationController
     if review.reviewable_type == "responder"
       calc_responder_review(user)
       user.responder_rating = @response_rating
-      binding.pry
       @user.save
     else
       calc_requester_review(user)
