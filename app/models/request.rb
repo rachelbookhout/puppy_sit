@@ -16,7 +16,6 @@ class Request < ActiveRecord::Base
   validates :end_time, presence:true
   validates :address, presence:true
   validates :pay, presence:true
-
 end
 
 

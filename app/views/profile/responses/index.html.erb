@@ -1,8 +1,8 @@
 <ul>
 <%@responses.each do |response|%>
-<li><img src = "<%= response.request.photo%>" width: "20px" height: "20px"><p><%= response.request.dog_name%></p>
-<p>Done for <%=response.request.requester.first_name %><img src = "<%= response.request.requester.profile_photo%>" width: "20px" height: "20px">. Scheduled for <%=response.request.start_time%> to <%=response.request.end_time%></p>
-<%= link_to "Unable to help out. Click here",profile_user_response_path(@user.id, response.id), method: :delete, data: {confirm: "Are you sure? If it is within two days, you will be charged a no-show fee."}%>
-</li>
+  <li><img src = "<%= response.request.photo%>" width: "20px" height: "20px"><p><%= response.request.dog_name%></p>
+  <p>Done for <%=response.request.requester.first_name %><img src = "<%= response.request.requester.profile_photo%>" width: "20px" height: "20px">. Scheduled for <%=response.request.start_time%> to <%=response.request.end_time%></p>
+  <%= link_to "Unable to help out. Click here",profile_user_response_path(@user.id, response.id), method: :delete, data: {confirm: "Are you sure? If it is within two days, you will be charged a no-show fee."}%>
+  </li>
 <%end%>
 </ul>

@@ -1,8 +1,8 @@
 class Review < ActiveRecord::Base
   belongs_to :reviewer, class_name: "User"
   belongs_to :reviewable, class_name: "User"
-
   belongs_to :request
+
   validates :request, presence: true
   validates :title, presence: true
   validates :body, presence: true
@@ -21,7 +21,7 @@ class Review < ActiveRecord::Base
 
   def calc_requester_review(user)
     requester_reviews = Review.where(reviewble:user.id, reviewable_type:"requester")
-     requester_rating = 0
+    requester_rating = 0
     requester_reviews.each do |review|
       review.rating += requester_rating
     end
@@ -34,6 +34,4 @@ class Review < ActiveRecord::Base
     @requester_rating = user.requester_rating
     @response_rating = user.responder_rating
   end
-
-
 end

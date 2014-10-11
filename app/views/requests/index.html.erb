@@ -1,13 +1,5 @@
-<ul>
-<% @requests.each do |request| %>
-<li><img src = "<%= request.photo%>" width = "50px" height: "50px"><%= link_to request.dog_name, request_path(request) %><%= request.start_time%></li>
-</br>
-<%end%>
-</ul>
-<% if current_user %>
-
 <div id="map"></div>
 
-
+<% if current_user %>
 <%= link_to "Submit your Request", new_request_path %>
 <%end%>

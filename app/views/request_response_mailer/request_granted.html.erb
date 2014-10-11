@@ -4,23 +4,11 @@
     <meta content= 'text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>
-      Dear <%= @user.first_name %>
-    </p>
-    <p>
-      The request you have made to find a babysitter for <%= @request.dog_name%> has been granted by <%=@responder[0]["first_name"]%>.
-      </p>
-      <p>
-      Please reach out to <%= @responder[0]["first_name"] %> at <%= @responder[0]["email"] %> in order to make arrangements for the care of your puppy.
-    </p>
-      <p>
-      Thank you for using our services and we look forward to helping you again.
-      </p>
-      <p>
-      Best,
-      </p>
-      <p>
-    The Puppy Sitter Team
-    </p>
+    <p>  Dear <%= @user.first_name %></p>
+    <p> The request you have made to find a babysitter for <%= @request.dog_name%> has been granted by <%=@responder[0]["first_name"]%>.</p>
+    <p>Please reach out to <%= @responder[0]["first_name"] %> at <%= @responder[0]["email"] %> in order to make arrangements for the care of your puppy.</p>
+    <p>Thank you for using our services and we look forward to helping you again.</p>
+    <p> Best,</p>
+    <p>The Puppy Sitter Team</p>
   </body>
 </html>

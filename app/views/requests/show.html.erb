@@ -11,19 +11,19 @@
 
 
 <%= simple_form_for [@request,@comment] do |f| %>
-<%= f.input :body, label: "Questions?" %>
-<%= f.button :submit %>
+  <%= f.input :body, label: "Questions?" %>
+  <%= f.button :submit %>
 <%end%>
 <% if @request.responses == [] || @request.responses.first.chosen != true %>
-<%= form_for [@request,@response] do |f| %>
-<%= f.submit "I Want to Help!"%>
-<%end%>
+  <%= form_for [@request,@response] do |f| %>
+  <%= f.submit "I Want to Help!"%>
+  <%end%>
 <%end%>
 
 <h2>Comments </h2>
 <ul>
 <%@comments.each do |comment| %>
   <li><img src= "<%= comment.user.profile_photo%>" width = "70px" height = "70px"><%= comment.body%> </li>
-  <%end%>
+<%end%>
   </ul>
 <%=link_to "Go Back", requests_path %>
