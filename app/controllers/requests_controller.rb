@@ -16,8 +16,8 @@ class RequestsController < ApplicationController
       name: item.dog_name,
       photo: "#{item.photo}",
       num: item.id,
-      start_time: item.start_time,
-      end_time: item.end_time,
+      start_time: item.start_time.to_s(:times),
+      end_time: item.end_time.to_s(:times),
       :'marker-color' => '#00607d',
       :'marker-symbol' => 'circle',
       :'marker-size' => 'medium'
