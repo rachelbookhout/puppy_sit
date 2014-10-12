@@ -10,15 +10,23 @@ feature 'User will recieve emails', %Q{
 
 
 
-  # scenario 'recieve an email when a review has been made about me ' do
-  #  prev_mail_count = ActionMailer::Base.deliveries.count
-  #   #create review
-  #   expect(ActionMailer::Base.deliveries.size).to eql(prev_mail_count + 1)
-  #   last_email = ActionMailer::Base.deliveries.last
-  #   expect(last_email).to have_subject('')
-  #   #add who the reviewee is
-  #   expect(last_email).to deliver_to('')
-  # end
+  scenario 'recieve an email when a review has been made about me ' do
+    @response = FactoryGirl.create(:response)
+    @reviewer  = @response.responder
+    @requester = @response.request.requester
+    sign_in_as(@reviewer)
+    click_on "My Profile"
+    visit profile_user_path(@reviewer)
+    click_on "View Pending Reviews"
+    click_on "#{@response.request.dog_name}"
+    fill_in "Title", with: "Awesome!"
+    fill_in "Body", with: "They were great"
+    fill_in "Rating", with: 5
+    click_on "Create Review"
+    last_email = ActionMailer::Base.deliveries.last
+    expect(last_email).to deliver_to(@requester)
+    expect(last_email).to have_subject('You have recieved a new review')
+  end
 
 
 
@@ -41,8 +49,6 @@ feature 'User will recieve emails', %Q{
 
   scenario 'recieve an email when my request has been unchosen' do
     prev_mail_count = ActionMailer::Base.deliveries.count
-    # @requester = FactoryGirl.build(:user)
-    # @responder = FactoryGirl.build(:user)
     @response = FactoryGirl.create(:response)
     @responder = @response.responder
     sign_in_as(@responder)

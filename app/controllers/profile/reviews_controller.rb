@@ -13,7 +13,7 @@ class Profile::ReviewsController < ApplicationController
 
   def myreviews
     @user = User.find(params[:user_id])
-    @reviews = Review.where("reviewer_id" == @user.id)
+    @reviews = Review.where(reviewer_id:@user.id)
   end
 
   def edit
@@ -27,6 +27,7 @@ class Profile::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
     redirect_to profile_user_path(@user.id)
+    flash[:notice] = "Your review has been deleted"
   end
 
 

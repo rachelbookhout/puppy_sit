@@ -47,7 +47,11 @@ class ReviewsController < ApplicationController
     responder_reviews.each do |review|
       response_rating += review.rating
     end
-    @response_rating = response_rating/responder_reviews.length
+    if responder_reviews.length > 0
+      @response_rating = response_rating/responder_reviews.length
+    else
+      @response_rating = 0
+    end
   end
 
   def calc_requester_review(user)
@@ -56,7 +60,11 @@ class ReviewsController < ApplicationController
     requester_reviews.each do |review|
       requester_rating  += review.rating
     end
-    @requester_rating = requester_rating/requester_reviews.length
+    if requester_reviews.length > 0
+      @requester_rating = requester_rating/requester_reviews.length
+    else
+      @requester_rating = 0
+    end
   end
 
   def update_review_score(user,review)
