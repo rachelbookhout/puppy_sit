@@ -9,13 +9,14 @@ feature 'User can view all people they can review', %Q{
 
   scenario 'I can see the people who have answered my requests' do
    @response = FactoryGirl.create(:response)
+   @request = @response.request
    @responder = @response.responder
-   @user = @response.request.requester
+   @user = @request.requester
    sign_in_as(@user)
    click_on "My Profile"
    visit profile_user_path(@user)
    click_on "View Pending Reviews"
-   expect(page).to have_content("#{@responder.first_name}")
+   expect(page).to have_content(@responder.first_name)
   end
 
   scenario "I can see the people who I have answered their request" do

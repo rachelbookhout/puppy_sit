@@ -10,6 +10,7 @@ FactoryGirl.define do
     end
     password "hottie88"
     profile_photo { fixture_file_upload(Rails.root.join('spec', 'photos', 'test.png'), 'image/png') }
+    profile "I'm a barbie girl in a barbie world!"
   end
 
   factory :request do

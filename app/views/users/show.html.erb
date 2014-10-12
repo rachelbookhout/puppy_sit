@@ -1,5 +1,10 @@
 <div id = "profile-page">
 <img src = "<%=@user.profile_photo%>" width = "200px" height = "200px"><%= @user.first_name %>
+<% if @user.profile != nil %>
+<%= @user.profile %>
+<%else%>
+<h2> User hasn't supplied us with any information about themselves </h2>
+<%end%>
 <% if @user.profile != nil%>
   <%= @user.profile%>
 <%end%>
