@@ -1,30 +1,60 @@
-<div class = "ad">
-<h1><%= @request.dog_name %></h1>
-<img src = "<%= @request.photo%>">
-<h5> Requested by <%= link_to @request.requester.first_name,user_path(@request.requester.id)%></h5>
+<div class = "row" id = "ad">
+<div class = "large-6 columns">
+<img src = "<%= @request.photo%>" height = "500px" width = "500px">
+</div>
+<div class = "large-6 columns">
+<p><h1><%= @request.dog_name %></h1><h5> Requested by <%= link_to @request.requester.first_name,user_path(@request.requester.id)%></h5></p>
 <h5>Start Time: <%=@request.start_time.to_s(:times)%></h5>
 <h5>End Time: <%= @request.end_time.to_s(:times)%></h5>
+<h5> Pay: $<%=@request.pay%>
+<%if @request.hourly != nil %>
+  <%= "per hour"%>
+<% elsif @request.weekly != nil%>
+  <%= "per week"%>
+<%else%>
+  <%= "per day"%>
+<%end%>
+</h5>
 
-<h5> Address: <%=@request.address%>- Pay <%=@request.pay%></h5>
-<h3><%= @request.title%></h3>
-<h4><%= @request.body%></h4>
+<h3 id = "title"><%= @request.title%></h3>
+
+<h4 id = "body"><%= @request.body%></h4>
+
 </div>
-
-
+</div>
+</br>
+<div class = "row">
+<div class = "large-10 columns">
 <%= simple_form_for [@request,@comment] do |f| %>
   <%= f.input :body, label: "Questions?" %>
   <%= f.button :submit %>
 <%end%>
+</div>
+</div>
+<div class = "row"
 <% if @request.responses == [] || @request.responses.first.chosen != true %>
   <%= form_for [@request,@response] do |f| %>
+  <div class = "large-2 columns">
   <%= f.submit "I Want to Help!"%>
+  </div>
   <%end%>
 <%end%>
-
-<h2>Comments </h2>
-<ul>
+</div>
+</br>
+</br>
 <%@comments.each do |comment| %>
-  <li><img src= "<%= comment.user.profile_photo%>" width = "70px" height = "70px"><%= comment.body%> </li>
+
+     <div class="row">
+            <div class="large-2 columns small-3"><img src= "<%= comment.user.profile_photo%>" width = "70px" height = "70px"></div>
+            <div class="large-10 columns"><p><%= comment.body%></p></div>
+          </div>
+        </div>
+      </div>
+      <div class = "row">
+      <div class = "large-2 columns small-3">
+      <%= comment.user.first_name %>
+      </div>
+      </div>
 <%end%>
-  </ul>
+
 <%=link_to "Go Back", requests_path %>
