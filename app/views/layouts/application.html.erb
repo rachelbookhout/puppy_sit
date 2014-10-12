@@ -12,8 +12,14 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-  <nav class = "clearfix">
-  <ul>
+  <nav class = "top-bar">
+  <section class = "title-area">
+   <ul class = "left">
+    <li class = "name"><h1>Puppy Sitter</h1></li>
+   </ul>
+  </section>
+  <section class = "top-bar-section">
+  <ul class = "right">
     <% if current_user%>
       <li><%= link_to "My Profile", profile_user_path(current_user)%></li>
       <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
@@ -21,6 +27,7 @@
       <li><%= link_to "Sign in", new_user_session_path %></li>
       <li><%= link_to "Sign up", new_user_registration_path%></li>
    <%end%>
+   </ul>
    </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

@@ -1,16 +1,4 @@
-.clearfix:before,
-.clearfix:after {
-  content: " ";
-  display: table;
-}
 
-.clearfix:after {
-  clear: both;
-}
-
-.clearfix {
-    *zoom: 1;
-}
 nav {
   height: 40px;
   width: 100%;
@@ -31,7 +19,6 @@ nav ul {
 
 nav li {
   display: inline;
-  float: left;
 }
 
 nav a {
@@ -95,3 +82,9 @@ nav a:hover, nav a:active {
   }
 }
 
+.name h1{
+  color:white;
+  font-weight: bold;
+  padding-left:10px;
+
+}
