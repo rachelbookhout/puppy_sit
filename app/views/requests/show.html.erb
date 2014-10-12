@@ -1,6 +1,6 @@
 <div class = "row" id = "ad">
 <div class = "large-6 columns">
-<img src = "<%= @request.photo%>" height = "500px" width = "500px">
+<img src = "<%= @request.photo%>" height = "auto" width = "600px">
 </div>
 <div class = "large-6 columns">
 <p><h1><%= @request.dog_name %></h1><h5> Requested by <%= link_to @request.requester.first_name,user_path(@request.requester.id)%></h5></p>
@@ -16,9 +16,9 @@
 <%end%>
 </h5>
 
-<h3 id = "title"><%= @request.title%></h3>
+<h4 id = "title"><%= @request.title%></h4>
 
-<h4 id = "body"><%= @request.body%></h4>
+<h5 id = "body"><%= @request.body%></h5>
 
 </div>
 </div>
