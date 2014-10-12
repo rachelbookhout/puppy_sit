@@ -8,7 +8,7 @@ feature 'User Submits a Review', %Q{
 
 
   scenario 'User submits a filled-out review ' do
-    @response = FactoryGirl.create(:response)
+    @response = FactoryGirl.build(:response)
     @reviewer  = @response.responder
     @requester = @response.request.requester
     sign_in_as(@reviewer)
@@ -25,7 +25,7 @@ feature 'User Submits a Review', %Q{
 
 
   scenario 'User submits a blank review' do
-    @response = FactoryGirl.create(:response)
+    @response = FactoryGirl.build(:response)
     @reviewer  = @response.responder
     @requester = @response.request.requester
     sign_in_as(@reviewer)
@@ -38,7 +38,7 @@ feature 'User Submits a Review', %Q{
   end
 
   scenario 'User submits a review with a rating higher than 5 ' do
-    @response = FactoryGirl.create(:response)
+    @response = FactoryGirl.build(:response)
     @reviewer  = @response.responder
     @requester = @response.request.requester
     sign_in_as(@reviewer)

@@ -3,7 +3,15 @@ class RequestsController < ApplicationController
 
 
   def index
-    @requests = Request.all
+    all_requests = Request.all
+    @requests = []
+    all_requests.each do |request|
+      if request.responses == [] || request.responses[0].chosen == false
+        if request.end_time > Time.now
+          @requests << request
+        end
+      end
+    end
     @geojson = []
     @requests.each do |item|
       @geojson << {
