@@ -89,3 +89,25 @@ nav a:hover, nav a:active {
 
 }
 
+.links{
+  padding-left: 2%;
+}
+.fi-x{
+  color:red;
+}
+.fi-check{
+  color:green;
+}
+.edit-button{
+  width: 80px;
+  height: 60px;
+  background-color: #faebd7;
+  moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border: 5px solid #f4d2a4;
+  padding: 5px;
+}
+.edit-button:hover{
+  opacity: 0.6;
+  background-color:#faebd7;
+};

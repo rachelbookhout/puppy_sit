@@ -1,12 +1,32 @@
 <% @requests.each do |request| %>
-  <p>
-  <% if request.responses.empty?%>
-<i class="fi-x"></i>
+<div class="row">
+
+<div class="large-4 columns">
+<img src = "<%= request.photo %>" width = "200" height = "200">
+</div>
+
+</br>
+</br>
+
+<div class="large-8 columns">
+<% if request.responses.empty?%>
+  <i class="fi-x"></i>
 <%else%>
-<i class="fi-check"></i>
-  <%end%>
-  <img src = "<%= request.photo %>" width = "40" height = "40"><%= link_to request.dog_name, profile_user_request_path(@user,request)%> - <%=request.start_time.to_s(:times) %>  -  <%= request.end_time.to_s(:times) %>
-  <%= link_to "Edit Request",edit_profile_user_request_path(@user.id, request.id)%>
-  <%= link_to "Delete Request",profile_user_request_path(@user.id, request.id), method: :delete, data: {confirm: "Are you sure"}%>
-  </p>
+  <i class="fi-check"></i>
 <%end%>
+<%= link_to request.dog_name, profile_user_request_path(@user,request)%> - <%=request.start_time.to_s(:times) %>  -  <%= request.end_time.to_s(:times) %>
+<div class = "row">
+<div class = "large-8 columns">
+  <button class="edit-button"><%= link_to "Edit Request",edit_profile_user_request_path(@user.id, request.id)%></button>
+  <button class="edit-button"><%= link_to "Delete Request",profile_user_request_path(@user.id, request.id), method: :delete, data: {confirm: "Are you sure"}%></button>
+</div>
+</div>
+</div>
+
+</div>
+</br>
+<%end%>
+
+
+
+

@@ -39,4 +39,8 @@ feature 'User can view all people they can review', %Q{
 
   scenario "I can only review a person once per interaction we have had" do
   end
+
+  scenario "I can undo a response and put the request live"
+  end
+
 end
