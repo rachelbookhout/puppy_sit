@@ -23,9 +23,9 @@
 <h4 id = "title"><%= @request.title%></h4>
 
 <h5 id = "body"><%= @request.body%></h5>
-
-</div>
-</div>
  <% if @request.responses.empty? == false %>
-  <%= link_to "I do not accept this person watching my dog",profile_user_response_path(@user, @request.responses[0].id), method: :delete, data: {confirm: "Are you sure?"}%>
+ <%= link_to "I do not accept this person watching my dog",profile_user_response_path(@user, @request.responses[0].id), method: :delete, data: {confirm: "Are you sure?"}%>
   <%end%>
+</div>
+</div>
+

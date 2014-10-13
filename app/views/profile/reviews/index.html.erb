@@ -1,29 +1,20 @@
-<h1>People you can Review </h1>
-<h2> People who you have baby-sat their pup</h2>
 <div class="row">
   <div class="large-2 columns">
     <% if @requesters != nil %>
       <% @requesters.each do |requester| %>
-        <img src = "<%= requester.profile_photo%>" height= "400px" width= "400px"><%= requester.first_name %>
+        <img src = "<%= requester.profile_photo%>" height= "200px" width= "200px"><%= requester.first_name %>
   </div>
-      <% requester.requests.each do |request| %>
-        <div class="large-10 columns">
-          <% if request.responses != [] && request.responses[0]["responder_id"] == @user.id%>
-            <div class = "row">
-              <div class = "large 10 columns">
-                  <img src = "<%= request.photo%>" width = "200px" height= "200px"><%= link_to "#{request.dog_name}", new_profile_user_review_path(requester, :reviewable_type=>'requester', :request_id => "#{request.id}")%>
-                </div>
-              </div>
-              <%end%>
-              </br>
-              </br>
-          <%end%>
+  <% requester.requests.each do |request| %>
+  <div class="large-10 columns">
+    <% if request.responses != [] && request.responses[0]["responder_id"] == @user.id%>
+        <img src = "<%= request.photo%>" width = "400px" height= "400px"><%= link_to "#{request.dog_name}", new_profile_user_review_path(requester, :reviewable_type=>'requester', :request_id => "#{request.id}")%>
       <%end%>
-    </div>
+    <%end%>
+    <%end%>
+  </div>
   <%end%>
 </div>
 
-<h2>People who have babysat your pup</h2>
 <% if @responders = nil %>
 <% @responders.each do |responder|%>
 <div class="row">

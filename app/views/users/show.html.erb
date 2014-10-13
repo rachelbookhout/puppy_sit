@@ -1,28 +1,42 @@
-<div id = "profile-page">
-<img src = "<%=@user.profile_photo%>" width = "200px" height = "200px"><%= @user.first_name %>
-<% if @user.profile != nil %>
-<%= @user.profile %>
-<%else%>
-<h2> User hasn't supplied us with any information about themselves </h2>
-<%end%>
-<% if @user.profile != nil%>
-  <%= @user.profile%>
-<%end%>
-<% if @user.requester_rating != nil %>
+  <div class="row">
+  <div class="large-6 columns"><img src = "<%=@user.profile_photo%>" width = "400px" height = "400px"></div>
+  <div class="large-6 columns">
+  <div class = "row">
+  <div class="large-6 columns"><%= @user.first_name %></div>
+  </div>
+  <div class = "row">
+  <div class="large-6 columns"></div>
+  <h1><% if @user.profile != nil %>
+  <%= @user.profile %></h1>
+  <%else%>
+    <p> User hasn't supplied us with any information about themselves </p>
+  <%end%>
+  </div>
+  <div class = "row">
+  <div class = "large-6 columns"></div>
+  <% if @user.requester_rating != nil %>
   <h5> General Review Score:<%= @user.requester_rating %></h5>
-<%end%>
+  <%end%>
 <% if @user.responder_rating != nil %>
   <h5> Review Score for Babysitting Puppies:<%= @user.responder_rating %></h5>
 <%end%>
+  </div>
+  </div>
+  </div>
+  </div>
 
-</div>
 
 <h1>Reviews for <%=@user.first_name%></h1>
-<ul>
 <%@reviews.each do |review| %>
-  <li>From <%=review.reviewer.first_name%><img src="<%=review.reviewer.profile_photo%>" height = "200px" width = "200px"><%=review.title%>-<%=review.rating%> Stars</li>
-  <ul>
-    <li><%= review.body %></li>
-  </ul>
+  <div class = "row">
+    <div class = "large-4 columns">
+      <img src="<%=review.reviewer.profile_photo%>" height = "200px" width = "200px">
+      <p><%= link_to review.reviewer.first_name, user_path(review.reviewer.id)%></p></div>
+  <div class = "large-8 columns">
+  <p><%=review.title%></p>
+  <p><%=review.rating%> Stars</p>
+  <p><%= review.body %></p>
+  </div>
+</div>
 <%end%>
-</ul>
+
