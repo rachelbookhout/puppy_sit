@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   namespace :profile do
     resources :users, only: [:show] do
-      resources :requests, only:[:index, :edit, :destroy]
+      resources :requests, only:[:index, :show, :edit, :destroy]
       resources :responses, only:[:index,:destroy]
       resources :reviews, except: [:show] do
         collection do

@@ -11,6 +11,6 @@ class Profile::ResponsesController < ApplicationController
   @response = Response.find(params[:id])
   NoMoreResponseMailer.no_longer_response(@response.request.requester,@response).deliver
   @response.destroy
-  redirect_to profile_user_responses_path(@user.id)
+  redirect_to profile_user_requests_path(@user)
   end
 end

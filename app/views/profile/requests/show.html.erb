@@ -1,0 +1,31 @@
+<div class = "row" id = "ad">
+<div class = "large-6 columns">
+<img src = "<%= @request.photo%>" height = "auto" width = "600px">
+</div>
+<div class = "large-6 columns">
+<p><h1><%= @request.dog_name %></h1>
+<% if @request.responses.empty? == false%>
+<h5> Responded to by <%= link_to @request.responders[0].first_name,user_path(@request.responders[0].id)%></h5>
+<%end%>
+</p>
+<h5>Start Time: <%=@request.start_time.to_s(:times)%></h5>
+<h5>End Time: <%= @request.end_time.to_s(:times)%></h5>
+<h5> Pay: $<%=@request.pay%>
+<%if @request.hourly != nil %>
+  <%= "per hour"%>
+<% elsif @request.weekly != nil%>
+  <%= "per week"%>
+<%else%>
+  <%= "per day"%>
+<%end%>
+</h5>
+
+<h4 id = "title"><%= @request.title%></h4>
+
+<h5 id = "body"><%= @request.body%></h5>
+
+</div>
+</div>
+ <% if @request.responses.empty? == false %>
+  <%= link_to "I do not accept this person watching my dog",profile_user_response_path(@user, @request.responses[0].id), method: :delete, data: {confirm: "Are you sure?"}%>
+  <%end%>

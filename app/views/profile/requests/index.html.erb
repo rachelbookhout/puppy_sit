@@ -5,7 +5,7 @@
 <%else%>
 <i class="fi-check"></i>
   <%end%>
-  <img src = "<%= request.photo %>" width = "40" height = "40"><%= request.dog_name%> - <%=request.start_time.to_s(:times) %>  -  <%= request.end_time.to_s(:times) %>
+  <img src = "<%= request.photo %>" width = "40" height = "40"><%= link_to request.dog_name, profile_user_request_path(@user,request)%> - <%=request.start_time.to_s(:times) %>  -  <%= request.end_time.to_s(:times) %>
   <%= link_to "Edit Request",edit_profile_user_request_path(@user.id, request.id)%>
   <%= link_to "Delete Request",profile_user_request_path(@user.id, request.id), method: :delete, data: {confirm: "Are you sure"}%>
   </p>
