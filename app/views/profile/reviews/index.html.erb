@@ -1,25 +1,38 @@
-<div class = "reviewable people">
-
 <h1>People you can Review </h1>
 <h2> People who you have baby-sat their pup</h2>
-  <% if @requesters != nil %>
-    <% @requesters.each do |requester| %>
-      <img src = "<%= requester.profile_photo%>" height: "100px" width: "100px"%> - <%= requester.first_name %>
+<div class="row">
+  <div class="large-2 columns">
+    <% if @requesters != nil %>
+      <% @requesters.each do |requester| %>
+        <img src = "<%= requester.profile_photo%>" height= "400px" width= "400px"><%= requester.first_name %>
+  </div>
       <% requester.requests.each do |request| %>
-        <% if request.responses != [] && request.responses[0]["responder_id"] == @user.id%>
-          <img src = "<%= request.photo%>"%><%= link_to "#{request.dog_name}", new_profile_user_review_path(requester, :reviewable_type=>'requester', :request_id => "#{request.id}")%>
-        <%end%>
+        <div class="large-10 columns">
+          <% if request.responses != [] && request.responses[0]["responder_id"] == @user.id%>
+            <div class = "row">
+              <div class = "large 10 columns">
+                  <img src = "<%= request.photo%>" width = "200px" height= "200px"><%= link_to "#{request.dog_name}", new_profile_user_review_path(requester, :reviewable_type=>'requester', :request_id => "#{request.id}")%>
+                </div>
+              </div>
+              <%end%>
+              </br>
+              </br>
+          <%end%>
       <%end%>
-    <%end%>
+    </div>
   <%end%>
 </div>
-</br>
-</br>
-</br>
+
 <h2>People who have babysat your pup</h2>
-  <% if @responders = nil %>
-    <% @responders.each do |responder|%>
-      <img src = "<%= responder.profile_photo%>"%> -<%= link_to "#{responder.first_name}", new_profile_user_review_path(responder,:reviewable_type=>'responder', :request_id => "#{responder.responses[0]["request_id"]}")%>
-    <%end%>
-  <%end%>
+<% if @responders = nil %>
+<% @responders.each do |responder|%>
+<div class="row">
+<div class="large-2 columns small-3">
+<img src = "<%= responder.profile_photo%>" width = "200px" height = "200px">
 </div>
+<div class="large-10 columns"></div>
+ <%= link_to "#{responder.first_name}", new_profile_user_review_path(responder,:reviewable_type=>'responder', :request_id => "#{responder.responses[0]["request_id"]}")%>
+</div>
+<%end%>
+<%end%>
+

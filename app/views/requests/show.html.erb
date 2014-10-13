@@ -31,10 +31,10 @@
 <%end%>
 </div>
 </div>
-<div class = "row"
+<div class = "row">
 <% if @request.responses == [] || @request.responses.first.chosen != true %>
-  <%= form_for [@request,@response] do |f| %>
   <div class = "large-2 columns">
+  <%= form_for [@request,@response] do |f| %>
   <%= f.submit "I Want to Help!"%>
   </div>
   <%end%>
