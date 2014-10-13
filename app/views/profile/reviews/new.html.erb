@@ -4,6 +4,6 @@
   <%= f.hidden_field :request_id, :value => params[:request_id]%>
   <%= f.input :title %>
   <%= f.input :body%>
-  <%= f.input :rating %>
+  <%= f.input :rating, :collection = 1..5 :as=> :radio %>
   <%= f.button :submit %>
 <%end%>
