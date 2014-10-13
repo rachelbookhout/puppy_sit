@@ -99,8 +99,8 @@ nav a:hover, nav a:active {
   color:green;
 }
 .edit-button{
-  width: 80px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   background-color: #faebd7;
   moz-border-radius: 15px;
   -webkit-border-radius: 15px;
