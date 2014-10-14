@@ -76,6 +76,7 @@ class RequestsController < ApplicationController
     if current_user.is_admin?
       @request.destroy
       redirect_to requests_url
+      flash[:notice] = "This request has been successfully destroyed"
     end
   end
 

@@ -57,6 +57,7 @@ class ReviewsController < ApplicationController
     @user.save
    end
    redirect_to @user
+   flash[:notice] = "The Review has been sucessfully removed"
    end
 
 
