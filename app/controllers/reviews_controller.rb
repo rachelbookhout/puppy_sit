@@ -41,6 +41,25 @@ class ReviewsController < ApplicationController
     end
   end
 
+
+  def destroy
+   @user = User.find(params[:user_id])
+   @review = Review.find(params[:id])
+   if @review.reviewable_type = "responder"
+    @review.destroy
+    calc_responder_review(@user)
+    @user.responder_rating = @response_rating
+    @user.save
+   else
+    @review.destroy
+    calc_requester_review(@user)
+    @user.requester_rating = @requester_rating
+    @user.save
+   end
+   redirect_to @user
+   end
+
+
   def calc_responder_review(user)
     responder_reviews = Review.where(reviewable_id:user.id, reviewable_type:"responder")
     response_rating = 0
@@ -48,7 +67,7 @@ class ReviewsController < ApplicationController
       response_rating += review.rating
     end
     if responder_reviews.length > 0
-      @response_rating = response_rating/responder_reviews.length
+      @response_rating = response_rating/responder_reviews.length.to_f
     else
       @response_rating = 0
     end
@@ -61,7 +80,7 @@ class ReviewsController < ApplicationController
       requester_rating  += review.rating
     end
     if requester_reviews.length > 0
-      @requester_rating = requester_rating/requester_reviews.length
+      @requester_rating = requester_rating/requester_reviews.length.to_f
     else
       @requester_rating = 0
     end

@@ -36,6 +36,9 @@
   <p><%=review.title%></p>
   <p><%=review.rating%> Stars</p>
   <p><%= review.body %></p>
+  <%if current_user.is_admin?%>
+  <%=link_to "Delete Review", user_review_path(@user,review), method: :delete, data: {confirm: "Are you sure"}  %>
+  <%end%>
   </div>
 </div>
 <%end%>

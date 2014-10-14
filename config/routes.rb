@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:show] do
-    resources :reviews, only:[:index, :create, :show, :update]
+    resources :reviews, only:[:index, :create, :show, :update, :destroy]
   end
   resources :requests, except: [:edit] do
    resources :comments, only:[:create]
