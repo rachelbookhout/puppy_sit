@@ -117,3 +117,16 @@ nav ul li:hover ul.profile-dropdown{
   display:block;
 }
 
+.links{
+  margin-left: 5%;
+}
+.links p{
+  font-family: 'Raleway', sans-serif;
+}
+.content{
+  font-family: 'Raleway', sans-serif;
+}
+.list{
+   font-family: 'Raleway', sans-serif;
+   font-size: 30px;
+}

@@ -4,7 +4,7 @@
     <p><%= "#{@request.errors.count} error(s) prevented your request from being saved:"%></p>
     <ul>
       <% @request.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li class = "content"><%= msg %></li>
       <% end %>
     </ul>
   <% end %>

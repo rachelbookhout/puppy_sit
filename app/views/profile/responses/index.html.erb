@@ -1,10 +1,14 @@
+</br>
+</br>
+</br>
+
 <%@responses.each do |response|%>
 <div class="row">
   <div class="large-4 columns">
     <img src = "<%= response.request.photo%>" width = "300px" height = "300px">
       <div class = "row">
         <div class = "large-4 columns">
-          <%= response.request.dog_name%>
+         <p class = "content"><%= response.request.dog_name%></p>
         </div>
       </div>
   </div>
@@ -14,13 +18,13 @@
 <img src = "<%= response.request.requester.profile_photo%>" width= "200px" height= "200px">
 <div class = "row">
 <div class = "large-2 columns">
-<%=response.request.requester.first_name %>
+<p class = "content"><%=response.request.requester.first_name %><p>
 </div>
 </div>
 </div>
 
 <div class = "large-6 columns">
-<p>Scheduled for <%=response.request.start_time.to_s(:times)%> to <%=response.request.end_time.to_s(:times)%></p>
+<p class = "content">Scheduled for <%=response.request.start_time.to_s(:times)%> to <%=response.request.end_time.to_s(:times)%></p>
  <button class="edit-button"><%= link_to "Unable to help out? Click here",profile_user_response_path(@user.id, response.id), method: :delete, data: {confirm: "Are you sure? If it is within two days, you will be charged a no-show fee."}%></button>
 </div>
 

@@ -68,7 +68,7 @@ class ReviewsController < ApplicationController
       response_rating += review.rating
     end
     if responder_reviews.length > 0
-      @response_rating = response_rating/responder_reviews.length.to_f
+      @response_rating = response_rating/responder_reviews.length
     else
       @response_rating = 0
     end
@@ -81,7 +81,7 @@ class ReviewsController < ApplicationController
       requester_rating  += review.rating
     end
     if requester_reviews.length > 0
-      @requester_rating = requester_rating/requester_reviews.length.to_f
+      @requester_rating = requester_rating/requester_reviews.length
     else
       @requester_rating = 0
     end

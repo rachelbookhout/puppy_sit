@@ -14,11 +14,21 @@
   </div>
   <div class = "row">
   <div class = "large-6 columns"></div>
+
   <% if @user.requester_rating != nil %>
-  <h5> General Review Score:<%= @user.requester_rating %></h5>
+  <h5> General Review Score:
+  <% @user.requester_rating.times do%>
+  <i class="fi-heart"></i>
   <%end%>
+  </h5>
+  <%end%>
+
 <% if @user.responder_rating != nil %>
-  <h5> Review Score for Babysitting Puppies:<%= @user.responder_rating %></h5>
+  <h5> Review Score for Babysitting Puppies:
+<% @user.responder_rating.times do%>
+  <i class="fi-star"></i>
+  <%end%>
+  </h5>
 <%end%>
   </div>
   </div>
@@ -34,7 +44,9 @@
       <p><%= link_to review.reviewer.first_name, user_path(review.reviewer.id)%></p></div>
   <div class = "large-8 columns">
   <p><%=review.title%></p>
-  <p><%=review.rating%> Stars</p>
+  <p><%review.rating.times do%>
+      <i class="fi-star"></i>
+  <%end%></p>
   <p><%= review.body %></p>
   <%if current_user.is_admin?%>
   <%=link_to "Delete Review", user_review_path(@user,review), method: :delete, data: {confirm: "Are you sure"}  %>
