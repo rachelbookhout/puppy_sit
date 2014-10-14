@@ -7,9 +7,9 @@
 <h5>Start Time: <%=@request.start_time.to_s(:times)%></h5>
 <h5>End Time: <%= @request.end_time.to_s(:times)%></h5>
 <h5> Pay: $<%=@request.pay%>
-<%if @request.hourly != nil %>
+<%if @request.hourly != false %>
   <%= "per hour"%>
-<% elsif @request.weekly != nil%>
+<% elsif @request.weekly != false%>
   <%= "per week"%>
 <%else%>
   <%= "per day"%>
