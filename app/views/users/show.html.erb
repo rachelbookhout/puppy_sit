@@ -2,12 +2,12 @@
   <div class="large-6 columns"><img src = "<%=@user.profile_photo%>" width = "400px" height = "400px"></div>
   <div class="large-6 columns">
   <div class = "row">
-  <div class="large-6 columns"><%= @user.first_name %></div>
+  <div class="large-6 columns"><h1 class = "content"><%= @user.first_name %></h1></div>
   </div>
   <div class = "row">
   <div class="large-6 columns"></div>
-  <h1><% if @user.profile != nil %>
-  <%= @user.profile %></h1>
+  <p class = "content"><% if @user.profile != nil %>
+  <%= @user.profile %></p>
   <%else%>
     <p> User hasn't supplied us with any information about themselves </p>
   <%end%>
@@ -34,20 +34,20 @@
   </div>
   </div>
   </div>
+</br>
+</br>
 
-
-<h1>Reviews for <%=@user.first_name%></h1>
 <%@reviews.each do |review| %>
   <div class = "row">
     <div class = "large-4 columns">
       <img src="<%=review.reviewer.profile_photo%>" height = "200px" width = "200px">
-      <p><%= link_to review.reviewer.first_name, user_path(review.reviewer.id)%></p></div>
+      <p class = "reviews"><%= link_to review.reviewer.first_name, user_path(review.reviewer.id)%></p></div>
   <div class = "large-8 columns">
-  <p><%=review.title%></p>
+  <h3 class = "reviews"><%=review.title%></h3>
   <p><%review.rating.times do%>
       <i class="fi-star"></i>
   <%end%></p>
-  <p><%= review.body %></p>
+  <p class = "reviews"><%= review.body %></p>
   <%if current_user.is_admin?%>
   <%=link_to "Delete Review", user_review_path(@user,review), method: :delete, data: {confirm: "Are you sure"}  %>
   <%end%>
