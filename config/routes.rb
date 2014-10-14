@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :reviews, only:[:index, :create, :show, :update]
   end
-  resources :requests, except: [:destroy,:edit] do
+  resources :requests, except: [:edit] do
    resources :comments, only:[:create]
    resources :responses, only:[:create]
   end

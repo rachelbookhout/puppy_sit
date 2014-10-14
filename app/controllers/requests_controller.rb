@@ -71,6 +71,14 @@ class RequestsController < ApplicationController
   end
   end
 
+  def destroy
+    @request = Request.find(params[:id])
+    if current_user.is_admin?
+      @request.destroy
+      redirect_to requests_url
+    end
+  end
+
   private
 
   def request_params
