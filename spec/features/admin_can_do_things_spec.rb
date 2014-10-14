@@ -6,13 +6,29 @@ feature 'Admin can do certain things', %Q{
   and edit or destroy them at will
 } do
 
+  let(:admin) { FactoryGirl.create(:user, role: 'admin') }
+
 
   scenario 'Admin can see all users' do
-
+    user = FactoryGirl.create(:user)
+    sign_in_as(admin)
+    visit '/admin/users'
+    expect(page).to have_content(user.first_name)
   end
 
-  scenario "Admin can see all requests" do
 
+  scenario "Admin can see all requests" do
+    request = FactoryGirl.create(:request)
+    sign_in_as(admin)
+    visit '/admin/requests'
+    expect(page).to have_content(request.dog_name)
+  end
+
+  scenario "User should not be able to see these pages" do
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+    visit 'admin/users'
+    expect(page).to have_content("You are not authorized to view this resource.")
   end
 
   scenario "Admin can delete reviews" do

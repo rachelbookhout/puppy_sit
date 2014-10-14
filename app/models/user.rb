@@ -32,8 +32,10 @@ class User < ActiveRecord::Base
       @reviewable_responders = @reviewable_responders.uniq
     end
   end
-end
+
 
 def is_admin?
   role == 'admin'
+end
+
 end
