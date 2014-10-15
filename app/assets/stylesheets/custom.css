@@ -144,3 +144,9 @@ nav ul li:hover ul.profile-dropdown{
   font-family: 'Raleway', sans-serif;
   font-size: 12px;
 }
+.fi-star{
+  color:#FFD700;
+}
+.fi-heart{
+  color:red;
+}
