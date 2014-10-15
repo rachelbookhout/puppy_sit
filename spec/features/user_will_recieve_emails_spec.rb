@@ -28,10 +28,6 @@ feature 'User will recieve emails', %Q{
     expect(last_email).to have_subject('You have recieved a new review')
   end
 
-
-
-
-
   scenario 'recieve an email when my request has been chosen ' do
     prev_mail_count = ActionMailer::Base.deliveries.count
     @request = FactoryGirl.create(:request)

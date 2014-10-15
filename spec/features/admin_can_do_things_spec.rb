@@ -8,7 +8,6 @@ feature 'Admin can do certain things', %Q{
 
   let(:admin) { FactoryGirl.create(:user, role: 'admin') }
 
-
   scenario 'Admin can see all users' do
     user = FactoryGirl.create(:user)
     sign_in_as(admin)
@@ -51,5 +50,4 @@ feature 'Admin can do certain things', %Q{
     click_on "Delete Request"
     expect(page).to have_content("This request has been successfully destroyed")
   end
-
 end

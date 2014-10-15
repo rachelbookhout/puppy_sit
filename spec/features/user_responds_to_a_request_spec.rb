@@ -14,6 +14,4 @@ feature 'User Responds to a Request', %Q{
     click_on "I Want to Help!"
     expect(page).to have_content ("Thank you for your help. Please look at your email to learn about the next steps")
   end
-
-
 end

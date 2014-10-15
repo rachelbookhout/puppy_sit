@@ -6,13 +6,13 @@ feature 'Users can edit or delete their accounts', %Q{
   or get off of this site
 } do
 
-    before (:each) do
-      @user = FactoryGirl.create(:user)
-      sign_in_as(@user)
-      click_on "My Profile"
-     visit profile_user_path(@user)
-      click_on "Edit your Profile"
-    end
+  before (:each) do
+    @user = FactoryGirl.create(:user)
+    sign_in_as(@user)
+    click_on "My Profile"
+    visit profile_user_path(@user)
+    click_on "Edit your Profile"
+  end
 
   scenario 'User successfully edits their account' do
     fill_in "Current password", with: @user.password

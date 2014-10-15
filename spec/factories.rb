@@ -48,7 +48,6 @@ FactoryGirl.define do
     title "What a Great Sitter"
     body "I was so happy with the job she did"
     rating 5
-    # association :response
     association :request
     association :reviewer
     association :reviewable
