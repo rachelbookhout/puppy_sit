@@ -14,5 +14,4 @@ var msnry = new Masonry( container, {
   // options
   columnWidth: 2000,
   itemSelector: '.item',
-  "gutter": 20
 });

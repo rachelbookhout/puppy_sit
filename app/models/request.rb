@@ -8,10 +8,10 @@ class Request < ActiveRecord::Base
   has_many :responses
   has_many :responders, through: :responses
 
-  validates :title, presence:true, uniqueness:true
+  validates :title, presence:true
   validates :photo, presence:true
   validates :dog_name, presence:true
-  validates :body, presence:true
+  validates :body, presence:true, length:{maximum: 500}
   validates :start_time, presence:true
   validates :end_time, presence:true
   validates :address, presence:true

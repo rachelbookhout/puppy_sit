@@ -5,7 +5,7 @@ class Review < ActiveRecord::Base
 
   validates :request, presence: true
   validates :title, presence: true
-  validates :body, presence: true
+  validates :body, presence: true, length:{maximum: 500}
   validates :rating, presence: true
   validates :rating, :inclusion => {:in => 1..5, :message => "Number must be between 1-5"}
 

@@ -29,14 +29,4 @@ feature 'User can view all people they can review', %Q{
     click_on "View Pending Reviews"
     expect(page).to have_content("#{@requester.first_name}")
   end
-
-  scenario "I can only view people who have had their request/response time already pass" do
-  end
-
-  scenario "I can only review a person once per interaction we have had" do
-  end
-
-  scenario "I can undo a response and put the request live"
-  end
-
 end

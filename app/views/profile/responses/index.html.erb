@@ -25,7 +25,10 @@
 
 <div class = "large-6 columns">
 <p class = "content">Scheduled for <%=response.request.start_time.to_s(:times)%> to <%=response.request.end_time.to_s(:times)%></p>
- <button class="edit-button"><%= link_to "Unable to help out? Click here",profile_user_response_path(@user.id, response.id), method: :delete, data: {confirm: "Are you sure? If it is within two days, you will be charged a no-show fee."}%></button>
+
+<p class = "med">Unable to help out? Click below </p><%= link_to (image_tag('paw.png')),profile_user_response_path(@user.id, response.id), method: :delete, data: {confirm: "Are you sure? If it is within two days, you will be charged a no-show fee."}%>
+
+
 </div>
 
 </div>

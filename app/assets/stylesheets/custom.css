@@ -82,11 +82,11 @@ nav a:hover, nav a:active {
   }
 }
 
-.name h1{
+.name {
   color:white;
   font-weight: bold;
   padding-left:10px;
-
+  font-family: 'Raleway', sans-serif;
 }
 
 
@@ -152,4 +152,9 @@ nav ul li:hover ul.profile-dropdown{
 }
 .item{
   padding: 20px;
+}
+#message{
+  font-family: 'Raleway';
+  font-size: 16px;
+  text-align: center;
 }
