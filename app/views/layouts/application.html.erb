@@ -28,9 +28,8 @@
     <a href="#">My Profile</a>
     <ul class = "profile-dropdown">
       <li><%= link_to "View Your Requests",profile_user_requests_path(current_user.id)%> </li>
-      <li><%= link_to "Edit your Profile",edit_user_registration_path%></li>
+      <li><%= link_to "View Your Responses", profile_user_responses_path(current_user.id)%></li>
       <li><%= link_to "View Pending Reviews",profile_user_reviews_path(current_user.id)%> </li>
-      <li><%= link_to "Edit and Delete Reviews You Have Made",myreviews_profile_user_reviews_path(current_user.id)%> </li>
       </ul>
       </li>
       <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
