@@ -30,10 +30,6 @@ feature 'User can view all people they can review', %Q{
     expect(page).to have_content("#{@requester.first_name}")
   end
 
-
-  scenario 'I do not have a relationship with these people ' do
-  end
-
   scenario "I can only view people who have had their request/response time already pass" do
   end
 

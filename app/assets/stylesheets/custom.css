@@ -150,3 +150,6 @@ nav ul li:hover ul.profile-dropdown{
 .fi-heart{
   color:red;
 }
+.item{
+  padding: 20px;
+}

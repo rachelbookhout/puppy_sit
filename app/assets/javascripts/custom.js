@@ -12,6 +12,7 @@ $('nav li').hover(
 var container = document.querySelector('#container');
 var msnry = new Masonry( container, {
   // options
-  columnWidth: 900,
+  columnWidth: 2000,
   itemSelector: '.item',
+  "gutter": 20
 });
