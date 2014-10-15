@@ -7,3 +7,11 @@ $('nav li').hover(
     $('ul', this).stop().slideUp(100);
   }
 );
+
+
+var container = document.querySelector('#container');
+var msnry = new Masonry( container, {
+  // options
+  columnWidth: 900,
+  itemSelector: '.item',
+});
