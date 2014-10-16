@@ -17,5 +17,7 @@
 // = require masonry.pkg.min.js
 //= require masonry.pkgd.js
 //= require_tree .
+//= require fullcalendar
+
 
 $(function(){ $(document).foundation(); });
