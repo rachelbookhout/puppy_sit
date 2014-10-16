@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content= 'text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>  Dear <%= @user.first_name %></p>
+    <p> You have agreed to help <%=@request.requester.first_name%> by babysitting her dog, <%=@request.dog_name%> on <%= @request.start_time %>, ending on <%= @request.end_time%>.
+     <p> Please make arrangements with <%=@request.requester.first_name%> at <%= @request.requester.email%> so that you can agree on the terms of your agreement. If anything changes, you are free to cancel within two days of the request. After that, you will be charged a fee </p>
+     <p> Thank you for your help and we look forward to helping you more soon </p>
+    <p> Best,</p>
+    <p>The Puppy Sitter Team</p>
+  </body>
+</html>

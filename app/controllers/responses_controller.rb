@@ -13,6 +13,7 @@ class ResponsesController < ApplicationController
   @response.chosen = true
   if @response.save
     RequestResponseMailer.request_granted(@request.requester,@request).deliver
+    ResponseMailer.new_response(@response.responder,@request).deliver
     redirect_to root_path
     flash[:notice] = "Thank you for your help. Please look at your email to learn about the next steps"
   else

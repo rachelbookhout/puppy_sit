@@ -11,10 +11,7 @@ feature 'User can edit or delete a Review', %Q{
     @review = FactoryGirl.create(:review)
     @reviewer  = @review.reviewer
     sign_in_as(@reviewer)
-    click_on "My Profile"
-    visit profile_user_path(@reviewer)
-    click_on "Edit and Delete Reviews You Have Made"
-    click_on "Edit Review"
+    visit edit_profile_user_review_path(@reviewer, @review)
     fill_in "Title", with: "Awesome!"
     fill_in "Body", with: "They were great"
     fill_in "Rating", with: 5
@@ -26,10 +23,11 @@ feature 'User can edit or delete a Review', %Q{
     @review = FactoryGirl.create(:review)
     @reviewer  = @review.reviewer
     sign_in_as(@reviewer)
-    click_on "My Profile"
     visit profile_user_path(@reviewer)
     click_on "Edit and Delete Reviews You Have Made"
-    click_on "Delete Review"
+    within '.delete' do
+      click_on "Dogbone"
+    end
     expect(page).to have_content("Your review has been deleted")
   end
 end
