@@ -10,7 +10,7 @@ $(document).ready(function() {
 );
 
     $('#calendar').fullCalendar({
-       events: '/requests.json'
+       events: '/responses.json'
     })
 
 });

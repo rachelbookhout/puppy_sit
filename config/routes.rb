@@ -28,6 +28,7 @@ Rails.application.routes.draw do
    resources :comments, only:[:create]
    resources :responses, only:[:create]
   end
+  resources :responses, only:[:index]
   root to:'requests#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
