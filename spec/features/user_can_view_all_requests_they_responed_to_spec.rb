@@ -13,6 +13,6 @@ feature 'User can see all requests they have responded to', %Q{
    click_on "My Profile"
    visit profile_user_path(@responder)
    click_on "View your Responses"
-   expect(page).to have_content("Done for #{@response.request.requester.first_name}")
+   expect(page).to have_content(@response.request.requester.first_name)
   end
 end

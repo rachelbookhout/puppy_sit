@@ -14,8 +14,7 @@ feature 'User can view all people they can review', %Q{
    @user = @request.requester
    sign_in_as(@user)
    visit profile_user_requests_path(@user)
-   save_and_open_page
-   expect(page).to have_content(@responder.profile_photo)
+   expect(page).to have_content("Fido")
   end
 
   scenario "I can see the people who I have answered their request" do
@@ -24,6 +23,6 @@ feature 'User can view all people they can review', %Q{
     @requester = @response.request.requester
     sign_in_as(@user)
     visit profile_user_responses_path(@user)
-    expect(page).to have_content(@response.request.photo)
+    expect(page).to have_content(@response.request.requester.first_name)
   end
 end
