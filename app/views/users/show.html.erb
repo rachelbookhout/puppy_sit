@@ -7,27 +7,26 @@
   <div class = "row">
   <div class="large-6 columns"></div>
   <p class = "content"><% if @user.profile != nil %>
-  <%= @user.profile %></p>
+    <%= @user.profile %></p>
   <%else%>
     <p class = "content"> User hasn't supplied us with any information about themselves </p>
   <%end%>
   </div>
   <div class = "row">
   <div class = "large-6 columns"></div>
-
   <% if @user.requester_rating != nil %>
-  <h5> General Review Score:
-  <% @user.requester_rating.times do%>
-  <i class="fi-heart"></i>
+    <h5> General Review Score:
+    <% @user.requester_rating.times do%>
+    <i class="fi-heart"></i>
   <%end%>
   </h5>
   <%end%>
 
 <% if @user.responder_rating != nil %>
   <h5> Review Score for Babysitting Puppies:
-<% @user.responder_rating.times do%>
+  <% @user.responder_rating.times do%>
   <i class="fi-star"></i>
-  <%end%>
+<%end%>
   </h5>
 <%end%>
   </div>

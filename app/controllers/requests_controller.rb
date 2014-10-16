@@ -47,28 +47,28 @@ class RequestsController < ApplicationController
   end
 
   def new
-  @request = Request.new
+   @request = Request.new
   end
 
   def create
-  @request = Request.new(request_params)
-  @request.requester_id = current_user.id
-  if @request.save
-    redirect_to @request
-    flash[:notice] = "This Request has been created successfully"
-  else
-    render :new
-  end
+    @request = Request.new(request_params)
+    @request.requester_id = current_user.id
+    if @request.save
+      redirect_to @request
+      flash[:notice] = "This Request has been created successfully"
+    else
+      render :new
+    end
   end
 
   def update
-  @user = current_user
-  @request = Request.find(params[:id])
-  if @request.update(request_params)
-    redirect_to profile_user_requests_path(@user.id)
-  else
-    render 'edit'
-  end
+    @user = current_user
+    @request = Request.find(params[:id])
+    if @request.update(request_params)
+      redirect_to profile_user_requests_path(@user.id)
+    else
+      render 'edit'
+    end
   end
 
   def destroy

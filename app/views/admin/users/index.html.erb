@@ -2,13 +2,13 @@
 <div class="row">
 
 <div class="large-4 columns">
-<img src = "<%= user.profile_photo %>" width = "200px" height = "200px">
+  <img src = "<%= user.profile_photo %>" width = "200px" height = "200px">
 </div>
 
 </br>
 
 <div class="large-8 columns">
-<%= link_to user.first_name, user_path(user)%>
+  <%= link_to user.first_name, user_path(user)%>
 </div>
 </div>
 <%end%>

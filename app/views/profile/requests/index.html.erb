@@ -1,29 +1,25 @@
 <% @requests.each do |request| %>
 <div class="row">
-
 <div class="large-4 columns">
 <img src = "<%= request.photo %>" width = "200px" height = "200px">
 </div>
-
 </br>
-
 <div class="large-8 columns">
-<p class= "content">
-<% if request.responses.empty?%>
-  <i class="fi-x"></i>
-<%else%>
-  <i class="fi-check"></i>
-<%end%>
-<%= link_to request.dog_name, profile_user_request_path(@user,request)%> - <%=request.start_time.to_s(:times) %>  -  <%= request.end_time.to_s(:times) %></p>
-<div class = "row">
-<div class = "large-8 columns">
-  <%= link_to (image_tag('paw.png')),edit_profile_user_request_path(@user.id, request.id)%>
-<%= link_to (image_tag('paw.png')),profile_user_request_path(@user.id, request.id), method: :delete, data: {confirm: "Are you sure"}%>
-<p class = "small"> &nbsp Edit &nbsp &nbsp &nbsp &nbsp Delete</p>
+  <p class= "content">
+  <% if request.responses.empty?%>
+    <i class="fi-x"></i>
+  <%else%>
+    <i class="fi-check"></i>
+  <%end%>
+  <%= link_to request.dog_name, profile_user_request_path(@user,request)%> - <%=request.start_time.to_s(:times) %>  -  <%= request.end_time.to_s(:times) %></p>
+  <div class = "row">
+  <div class = "large-8 columns">
+    <%= link_to (image_tag('paw.png')),edit_profile_user_request_path(@user.id, request.id)%>
+    <%= link_to (image_tag('paw.png')),profile_user_request_path(@user.id, request.id), method: :delete, data: {confirm: "Are you sure"}%>
+    <p class = "small"> &nbsp Edit &nbsp &nbsp &nbsp &nbsp Delete</p>
+  </div>
+  </div>
 </div>
-</div>
-</div>
-
 </div>
 </br>
 <%end%>

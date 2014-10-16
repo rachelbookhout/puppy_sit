@@ -1,7 +1,7 @@
 <div class = links >
-<p><%= link_to "View Your Requests",profile_user_requests_path(@user.id)%></p>
-<p><%=link_to "View your Responses",profile_user_responses_path(@user.id) %></p>
-<p><%= link_to "Edit your Profile",edit_user_registration_path%></p>
-<p class = "click-review"><%= link_to "View Pending Reviews",profile_user_reviews_path(@user.id)%></p>
-<p><%= link_to "Edit and Delete Reviews You Have Made", myreviews_profile_user_reviews_path(@user.id)%> </p>
+  <p><%= link_to "View Your Requests",profile_user_requests_path(@user.id)%></p>
+  <p><%=link_to "View your Responses",profile_user_responses_path(@user.id) %></p>
+  <p><%= link_to "Edit your Profile",edit_user_registration_path%></p>
+  <p class = "click-review"><%= link_to "View Pending Reviews",profile_user_reviews_path(@user.id)%></p>
+  <p><%= link_to "Edit and Delete Reviews You Have Made", myreviews_profile_user_reviews_path(@user.id)%> </p>
 </div>

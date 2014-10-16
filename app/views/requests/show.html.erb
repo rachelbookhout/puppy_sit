@@ -1,43 +1,43 @@
 <div class = "row" id = "ad">
 <div class = "large-6 columns">
-<img src = "<%= @request.photo%>" height = "auto" width = "600px">
+  <img src = "<%= @request.photo%>" height = "auto" width = "600px">
 </div>
 <div class = "large-6 columns">
-<p><h1 class = "content"><%= @request.dog_name %></h1><h5 class = "content"> Requested by <%= link_to @request.requester.first_name,user_path(@request.requester.id)%></h5></p>
-<h5 class = "content">Start Time: <%=@request.start_time.to_s(:times)%></h5>
-<h5 class = "content">End Time: <%= @request.end_time.to_s(:times)%></h5>
-<h5 class = "content"> Pay: $<%=@request.pay%>
-<%if @request.hourly != false %>
-  <%= "per hour"%>
-<% elsif @request.weekly != false%>
-  <%= "per week"%>
-<%else%>
-  <%= "per day"%>
-<%end%>
-</h5>
+  <p><h1 class = "content"><%= @request.dog_name %></h1><h5 class = "content"> Requested by <%= link_to @request.requester.first_name,user_path(@request.requester.id)%></h5></p>
+  <h5 class = "content">Start Time: <%=@request.start_time.to_s(:times)%></h5>
+  <h5 class = "content">End Time: <%= @request.end_time.to_s(:times)%></h5>
+  <h5 class = "content"> Pay: $<%=@request.pay%>
+  <%if @request.hourly != false %>
+    <%= "per hour"%>
+  <% elsif @request.weekly != false%>
+    <%= "per week"%>
+  <%else%>
+    <%= "per day"%>
+  <%end%>
+  </h5>
 
-<h4 class = "content" id = "title"><%= @request.title%></h4>
+  <h4 class = "content" id = "title"><%= @request.title%></h4>
 
-<h5 class = "content" id = "body"><%= @request.body%></h5>
+  <h5 class = "content" id = "body"><%= @request.body%></h5>
 
 </div>
 </div>
 </br>
 <div class = "row">
 <div class = "large-10 columns">
-<%= simple_form_for [@request,@comment] do |f| %>
+  <%= simple_form_for [@request,@comment] do |f| %>
   <%= f.input :body, label: "Questions?" %>
   <%= f.button :submit %>
 <%end%>
 </div>
 </div>
 <div class = "row">
-<% if @request.responses == [] || @request.responses.first.chosen != true %>
+  <% if @request.responses == [] || @request.responses.first.chosen != true %>
   <div class = "large-2 columns">
-  <%= form_for [@request,@response] do |f| %>
-  <%= f.submit "I Want to Help!"%>
-<% if current_user &&current_user.is_admin? %>
-  <%= link_to "Delete Request",request_path(@request), method: :delete, data: {confirm: "Are you sure"}%>
+    <%= form_for [@request,@response] do |f| %>
+    <%= f.submit "I Want to Help!"%>
+  <% if current_user &&current_user.is_admin? %>
+    <%= link_to "Delete Request",request_path(@request), method: :delete, data: {confirm: "Are you sure"}%>
   <%end%>
   </div>
   <%end%>
@@ -46,18 +46,17 @@
 </br>
 </br>
 <%@comments.each do |comment| %>
-
-     <div class="row">
-            <div class="large-2 columns small-3"><img src= "<%= comment.user.profile_photo%>" width = "70px" height = "70px"></div>
-            <div class="large-10 columns"><p class = "reviews"><%= comment.body%></p></div>
-          </div>
-        </div>
-      </div>
-      <div class = "row">
-      <div class = "large-2 columns small-3">
-      <%= comment.user.first_name %>
-      </div>
-      </div>
+  <div class="row">
+    <div class="large-2 columns small-3"><img src= "<%= comment.user.profile_photo%>" width = "70px" height = "70px"></div>
+    <div class="large-10 columns"><p class = "reviews"><%= comment.body%></p></div>
+  </div>
+  </div>
+  </div>
+  <div class = "row">
+  <div class = "large-2 columns small-3">
+    <%= comment.user.first_name %>
+  </div>
+  </div>
 <%end%>
 
 <%=link_to "Go Back", requests_path %>

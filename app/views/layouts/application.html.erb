@@ -17,36 +17,36 @@
   <body>
   <nav class = "top-bar">
   <section class = "title-area">
-   <ul class = "left">
+  <ul class = "left">
     <li class = "name"><%= link_to "Puppy Sitter", root_path%></li>
-   </ul>
+  </ul>
   </section>
   <section class = "top-bar-section">
   <ul class = "right">
     <% if current_user%>
-    <li>
-    <a href="#">My Profile</a>
-    <ul class = "profile-dropdown">
-      <li><%= link_to "Home", profile_user_path(current_user)%></li>
-      <li><%= link_to "View Your Requests",profile_user_requests_path(current_user.id)%> </li>
-      <li><%= link_to "View Your Responses", profile_user_responses_path(current_user.id)%></li>
-      <li><%= link_to "View Pending Reviews",profile_user_reviews_path(current_user.id)%> </li>
+      <li>
+      <a href="#">My Profile</a>
+      <ul class = "profile-dropdown">
+        <li><%= link_to "Home", profile_user_path(current_user)%></li>
+        <li><%= link_to "View Your Requests",profile_user_requests_path(current_user.id)%> </li>
+        <li><%= link_to "View Your Responses", profile_user_responses_path(current_user.id)%></li>
+        <li><%= link_to "View Pending Reviews",profile_user_reviews_path(current_user.id)%> </li>
       </ul>
       </li>
       <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
     <%else%>
-      <li><%= link_to "Sign in", new_user_session_path %></li>
-      <li><%= link_to "Sign up", new_user_registration_path%></li>
-   <%end%>
+        <li><%= link_to "Sign in", new_user_session_path %></li>
+        <li><%= link_to "Sign up", new_user_registration_path%></li>
+    <%end%>
    </ul>
    </nav>
-    <p class="notice" id = "message"><%= notice %></p>
-    <p class="alert" id = "message"><%= alert %></p>
+   <p class="notice" id = "message"><%= notice %></p>
+   <p class="alert" id = "message"><%= alert %></p>
 
-    <%= yield %>
+  <%= yield %>
 
-    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css' rel='stylesheet' />
-    <%= javascript_include_tag "application" %>
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css' rel='stylesheet' />
+  <%= javascript_include_tag "application" %>
   </body>
 </html>
