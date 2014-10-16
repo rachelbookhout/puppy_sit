@@ -3,7 +3,7 @@
   <%= f.hidden_field :reviewable_type, :value => params[:reviewable_type]%>
   <%= f.hidden_field :request_id, :value => params[:request_id]%>
   <%= f.input :title %>
-  <%= f.input :body%>
+  <%= f.input :body, placeholder: "How was your interaction?"%>
   <%= f.input :rating, :collection => 1..5%>
   <%= f.button :submit %>
 <%end%>

@@ -30,8 +30,6 @@ class Profile::ReviewsController < ApplicationController
     flash[:notice] = "Your review has been deleted"
   end
 
-
-
  private
 
   def review_params

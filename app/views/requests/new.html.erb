@@ -9,7 +9,7 @@
 
 <div class = "row">
   <div class="large-5 columns">
-  <%= f.input :dog_name %>
+  <%= f.input :dog_name, placeholder: "What's your pup's name?" %>
   </div>
   </div>
 
@@ -22,19 +22,19 @@
 
   <div class = "row">
   <div class="large-5 columns">
-  <%= f.input :title %>
+  <%= f.input :title, placeholder: " Please provide a title - catchy titles get faster responses."%>
   </div>
   </div>
 
   <div class = "row">
   <div class="large-5 columns">
-  <%= f.input :body %>
+  <%= f.input :body, placeholder: 'Tell us about your dog - size, temperament, breed, etc. What do you need for your dog?' %>
   </div>
   </div>
 
   <div class = "row">
   <div class="large-5 columns">
-  <%= f.input :address %>
+  <%= f.input :address, placeholder: "Where do you live? This information is private to everyone" %>
   </div>
   </div>
   <%= f.hidden_field :latitude%>

@@ -1,6 +1,14 @@
 class ResponsesController < ApplicationController
   before_filter :authenticate_user!
 
+  def index
+    @responses = Response.where(responder: current_user)
+    @requests = []
+    @responses.each do |response|
+      @requests << response.request
+    end
+  end
+
   def new
     @responder = Responder.new
   end

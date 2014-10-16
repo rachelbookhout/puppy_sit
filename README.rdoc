@@ -1,0 +1,27 @@
+         Re^iews                                Users                           Requests
++----------+-------------+             +--------------------------+     +--------------------------+
+| title                  |             |  first_name              |     |requester_id              |
+| body                   |             |  last_name               |     | title                    |
+| rating                 |             |  profile photo           |     | body                     |
+| request_id             |             |  requester_rating        |     | addresss                 |
+| re^iewer_id            |             |  responder_rating        |     | pay                      |
+| re|iewable_id          | <-----------+  profile                 +---> | hourly                   |
+| reviewable_type        |             |                          |     | weekly                   |
+|                        |             |                          |     | daily                    |
+|                        |             |                          |     | dog_name                 |
+|                        |             |                          |     | start_time               |
+|                        |             |                          |     | end_time                 |
+|                        |             |                          |     |                          |
+|                        |             |                          |     |                          |
++------------------------+             +--------+-----------------+     +-----------+--------------+
+                                                |                       |           |
+                                                |                       |           |
+                                                |                       |           |
+                                                v                       |           v
+                                       Responses                 <------+      Comments
+                                  +-----------------------------+        +-----------------------------+
+                                  |  responder_id               |        |  body                       |
+                                  |  chosen                     |        |  user_id                    |
+                                  |  request_id                 |        |  request_id                 |
+                                  +-----------------------------+        |                             |
+                                                                         +-----------------------------+
