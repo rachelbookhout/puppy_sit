@@ -1,11 +1,14 @@
-<div id="container">
+  <ul class = "image-list">
   <% if @requesters != nil %>
     <% @requesters.each do |requester| %>
       <% requester.requests.each do |request| %>
         <% if request.responses != [] && request.responses[0]["responder_id"] == @user.id %>
-            <%= link_to(new_profile_user_review_path(requester, reviewable_type: 'requester', request_id: request.id)) do %>
-              <%= image_tag(request.photo, width: "400px", height: "auto", class: "item") %>
-            <% end %>
+           <li>
+           <%= link_to(new_profile_user_review_path(requester, reviewable_type: 'requester', request_id: request.id)) do %>
+              <%= image_tag(request.photo, width: "300px", height: "300px", class: "item") %>
+              <span class="text-content"><span>Review Me!</span></span>
+           <% end %>
+           </li>
         <% end %>
       <% end %>
     <% end %>
@@ -13,11 +16,11 @@
 
   <% if @responders = nil %>
     <% @responders.each do |responder|%>
-      <%= link_to(new_profile_user_review_path(responder,:reviewable_type=>'responder', :request_id => "#{responder.responses[0]["request_id"]}")) do %>
-      <%= image_tag(responder.profile_photo, width: "300px", height: "300px", class: "item")%>
+      <li><%= link_to(new_profile_user_review_path(responder,:reviewable_type=>'responder', :request_id => "#{responder.responses[0]["request_id"]}")) do %>
+      <%= image_tag(responder.profile_photo, class: "item")%><span class="text-content"><span>Review Me!</span></span></li>
+</li>
     <% end %>
     <% end %>
   <% end %>
-</div>
 
 <%= link_to 'Back', profile_user_path(current_user.id)%>
