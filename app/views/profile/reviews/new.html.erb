@@ -1,3 +1,4 @@
+<div class = "large-10 columns">
 <h1>New Review</h1>
 <%= simple_form_for [@user,@review] do |f| %>
   <%= f.hidden_field :reviewable_type, :value => params[:reviewable_type]%>
@@ -7,3 +8,4 @@
   <%= f.input :rating, :collection => 1..5%>
   <%= f.button :submit %>
 <%end%>
+</div>
