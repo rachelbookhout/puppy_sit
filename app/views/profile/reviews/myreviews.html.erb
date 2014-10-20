@@ -1,4 +1,5 @@
 <%@reviews.each do |review| %>
+<% if review.request.reviewed == false %>
   <div class = "row">
   <div class = "large-12 columns">
     <p class = "list"><img src = "<%=review.reviewable.profile_photo%>" width = "80px" height = "80px" > <%=review.reviewable.first_name %> & <%= review.request.dog_name%> <img src = "<%=review.request.photo%>" width = "80px" height = "80px"></p>
@@ -7,5 +8,6 @@
     </div>
   </div>
   </div>
+  <%end%>
   <%end%>
 <%= link_to 'Back', profile_user_path(current_user.id)%>
