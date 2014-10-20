@@ -29,3 +29,4 @@ gem 'rails_12factor', group: :production
 gem 'geocoder'
 gem 'mandrill-api'
 gem 'fullcalendar-rails'
+gem 'sprockets_better_errors'
