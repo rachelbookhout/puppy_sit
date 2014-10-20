@@ -2,9 +2,9 @@
   <div class = "row">
   <div class = "large-12 columns">
     <p class = "list"><img src = "<%=review.reviewable.profile_photo%>" width = "80px" height = "80px" > <%=review.reviewable.first_name %> & <%= review.request.dog_name%> <img src = "<%=review.request.photo%>" width = "80px" height = "80px"></p>
-    <%= link_to (image_tag('dogbone.png')),edit_profile_user_review_path(@user, review)%>
-    <div class = "delete"><%= link_to (image_tag('dogbone.png')), profile_user_review_path(@user,review),method: :delete, data: {confirm: "Are you sure?"}  %></div>
-    <p class = "med">&nbsp &nbsp Edit Review &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Delete Review</p>
+    <%= link_to (image_tag('dogbone.png')),edit_profile_user_review_path(@user, review)%><p class = "med">Edit Review</p>
+    <div class = "delete"><%= link_to (image_tag('dogbone.png')), profile_user_review_path(@user,review),method: :delete, data: {confirm: "Are you sure?"}  %></div> <p class = "med">Delete Review</p>
+    </div>
   </div>
   </div>
   <%end%>
