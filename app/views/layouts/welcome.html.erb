@@ -14,8 +14,8 @@
 
     <%= csrf_meta_tags %>
   </head>
-  <body>
-  <nav class = "top-bar">
+<body class = "welcome">
+ <nav class = "top-bar">
   <section class = "title-area">
   <ul class = "left">
     <li class = "name"><%= link_to "Puppy Sitter", requests_path%></li>
@@ -42,13 +42,12 @@
    </nav>
    <p class="notice" id = "message"><%= notice %></p>
    <p class="alert" id = "message"><%= alert %></p>
-
-  <%= yield %>
-    <div id="footer">
+<%= yield %>
+  <div id="footer">
       This page is only a demo, not a real puppy sitting site. Other users will get access to your email address if you request or respond to a puppy sitting.
   </div>
   <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css' rel='stylesheet' />
   <%= javascript_include_tag "application" %>
-  </body>
+</body>
 </html>

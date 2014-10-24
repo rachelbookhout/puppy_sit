@@ -158,7 +158,7 @@ nav ul li:hover ul.profile-dropdown{
   text-align: center;
 }
 .welcome{
-  background-image: url(http://www.hdwallpaperpc.com/preview/puppy_is_flying_animal_baby_daisies_dog_flowers_Flying_grass_Happy_Meadow_Pet_Playing_Rottweiler_run_117175/resolution_1920x1080);
+  background: url('/assets/happy_puppy.jpg');
 }
 .welcome-link{
   font-family: 'Raleway';
