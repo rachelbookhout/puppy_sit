@@ -190,4 +190,14 @@ ul.img-list li {
   width: 300px;
 }
 
-
+#footer{
+    height: 50px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    line-height: 50px;
+    color: #aaa;
+    text-align: center;
+    width: 100%;
+    background-color: black;
+}
